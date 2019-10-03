@@ -1,0 +1,2615 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wikitude SDK Android 7.2.0 Documentation</title>
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
+
+    <link type="text/css" rel="stylesheet" href="css/reset.css">
+    <link type="text/css" rel="stylesheet" href="css/docs.css">
+    <link type="text/css" rel="stylesheet" href="css/print.css" media="print">
+    <link type="text/css" rel="stylesheet" href="css/github.min.css">
+    <link type="text/css" rel="stylesheet" href="css/default.min.css">
+    <link type="text/css" rel="stylesheet" href="css/lightbox.min-0.5.1.css">
+    <link type="text/css" rel="stylesheet" href="css/jquery.treemenu.css">
+    <link type="text/css" rel="stylesheet" href="easytree-skin/ui.easytree.css">
+
+    
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/highlight-9.9.min.js"></script>
+    <script type="text/javascript" src="js/lunr.min-0.7.2.js"></script>
+    <script type="text/javascript" src="js/lightbox.min-0.5.1.js"></script>
+    <script type="text/javascript" src="js/jquery.easytree.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // Every image referenced from a Markdown document
+            $("#content img").each(function() {
+                // Let's put a caption if there is one
+                if($(this).attr("alt"))
+                    $(this).wrap('<figure class="image"></figure>')
+                        .after('<figcaption>'+$(this).attr("alt")+'</figcaption>');
+                });
+
+            // 
+            document.getElementById("documentationSelect").onchange = function() {
+                var selectedOption = this.value;
+                //console.log(selectedOption);
+                if(selectedOption !== ""){
+                        window.top.location.href = "https://www.wikitude.com/external/doc/documentation/latest/" + selectedOption;
+                    }
+            }
+        });
+    </script>
+
+
+</head>
+<body>
+    <div id="page">
+        <a name="top" /></a>
+        <header>
+            <h1><a href="">Documentation</a></h1>
+        </header>
+        <nav id="page-tabs">
+            <div class="nav-link">
+                <a href="https://support.wikitude.com/support/home" class="">Forum</a>
+                <a href="https://support.wikitude.com/support/solutions" class="">FAQ</a>
+                <a href="https://www.wikitude.com/documentation" class="active">Documentation</a>
+                <a href="https://www.wikitude.com/download">Download</a>
+            </div>
+            <div class="nav-url">
+                <a href="https://www.wikitude.com/">www.wikitude.com</a>
+            </div>
+        </nav>
+         
+
+<div id="sidebar">
+
+    <div id="sidebarHeader">
+
+        
+        <select id="documentationSelect">
+            
+                <option value=""  > --- Android --- </option>
+            
+                <option value="android"  selected > Android Javascript API </option>
+            
+                <option value="androidnative"  > Android Native API </option>
+            
+                <option value=""  > --- iOS --- </option>
+            
+                <option value="ios"  > iOS Javascript API </option>
+            
+                <option value="iosnative"  > iOS Native API </option>
+            
+                <option value=""  > --- Extensions --- </option>
+            
+                <option value="phonegap"  > Cordova </option>
+            
+                <option value="titanium"  > Titanium </option>
+            
+                <option value="unity"  > Unity </option>
+            
+                <option value="xamarin"  > Xamarin </option>
+            
+                <option value=""  > --- Smart Glasses --- </option>
+            
+                <option value="epson"  > Epson </option>
+            
+                <option value="odg"  > ODG </option>
+            
+                <option value="vuzix"  > Vuzix </option>
+            
+                <option value=""  > --- Services --- </option>
+            
+                <option value="cloudrecognition"  > Cloud Recognition </option>
+            
+        </select>
+
+        
+
+        <h2>Wikitude SDK Android</h2>
+
+        
+        <div id="version">version: 7.2.0</div>
+        
+        
+        <div id="api-type">JavaScript API</div>
+        
+
+    </div>
+
+    <input id="showNav" class="toggleNav" type="checkbox">
+    <label class="showNavLbl" for="showNav">Show Navigation</label>
+    <label class="hideNavLbl" for="showNav">Hide Navigation</label>
+
+    <div id="mainnav">
+        <form action="search.html"><input id="search" type="text" placeholder="Search documentation" name="q" /></form>
+        <nav id="toc">
+            
+    <ul>
+    
+        <li>
+            <a href="gettingstartedandroid.html#getting-started">Getting started</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="gettingstartedandroid.html#introduction-to-the-wikitude-sdk">Introduction to the Wikitude SDK</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="gettingstartedandroid.html#recommended-usage-of-this-documentation">Recommended Usage of this Documentation</a>
+            
+        </li>
+    
+        <li>
+            <a href="gettingstartedandroid.html#the-wikitude-sdk-augmented-reality-for-your-own-app">The Wikitude SDK - Augmented Reality for your own app</a>
+            
+        </li>
+    
+        <li>
+            <a href="gettingstartedandroid.html#architecture-of-the-wikitude-sdk">Architecture of the Wikitude SDK</a>
+            
+        </li>
+    
+        <li>
+            <a href="gettingstartedandroid.html#how-to-code-for-the-wikitude-sdk">How to code for the Wikitude SDK</a>
+            
+        </li>
+    
+        <li>
+            <a href="gettingstartedandroid.html#the-wikitude-developer-portal">The Wikitude Developer Portal</a>
+            
+        </li>
+    
+        <li>
+            <a href="gettingstartedandroid.html#feedback-and-contact">Feedback and Contact</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="setupguideandroid.html#setup-guide-android">Setup Guide Android</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="setupguideandroid.html#project-setup-android-studio">Project Setup Android Studio</a>
+            
+        </li>
+    
+        <li>
+            <a href="setupguideandroid.html#ar-view-in-activity">AR View in Activity</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="setupguideandroidlocation.html#location">Location</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="setupguideandroidlocation.html#example-location-strategy">Example Location Strategy</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="supporteddevicesandroid.html#supported-android-devices">Supported Android Devices</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="supporteddevices.html#supported-devices">Supported Devices</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="triallicense.html#how-to-obtain-a-free-trial-license">How to obtain a free trial license</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="triallicense.html#where-should-i-enter-the-license-key">Where should I enter the license key</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="triallicense.html#android">Android</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="samples.html#examples-tutorials">Examples Tutorials</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="samples.html#including-the-architectjs-library">Including the architect.js library</a>
+            
+        </li>
+    
+        <li>
+            <a href="samples.html#including-architectjs-prior-to-wikitude-sdk-53">Including architect.js prior to Wikitude SDK 5.3</a>
+            
+        </li>
+    
+        <li>
+            <a href="samples.html#samples-on-github">Samples on GitHub</a>
+            
+        </li>
+    
+        <li>
+            <a href="samples.html#android-sdk-examples">Android SDK Examples</a>
+            
+        </li>
+    
+        <li>
+            <a href="samples.html#setup">Setup</a>
+            
+        </li>
+    
+        <li>
+            <a href="samples.html#communication-between-javascript-and-android-native-java">Communication between JavaScript and Android Native (Java)</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="targetimages.html#target-images">Target Images</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="targetimages.html#image-recognition-samples">Image recognition samples</a>
+            
+        </li>
+    
+        <li>
+            <a href="targetimages.html#object-recognition-samples">Object recognition samples</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="imagerecognition.html#image-recognition">Image Recognition</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="imagerecognition.html#image-on-target">Image on Target</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="imagerecognition.html#different-targets">Different Targets</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="imagerecognition.html#interactivity">Interactivity</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="imagerecognition.html#adding-html-content">Adding HTML content</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="imagerecognition.html#bonus-sparkles">Bonus: Sparkles</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="solarsystemir.html#solar-system-ir">Solar System (IR)</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="advancedimagerecognition.html#gestures">Gestures</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="advancedimagerecognition.html#distance-to-target">Distance to target</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="advancedimagerecognition.html#extended-tracking">Extended Tracking</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="multipletargets.html#multiple-targets">Multiple Targets</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="multipletargets.html#distance-between-targets">Distance Between Targets</a>
+            
+        </li>
+    
+        <li>
+            <a href="multipletargets.html#transformation-between-targets">Transformation Between Targets</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="instanttracking.html#instant-tracking">Instant Tracking</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="instanttracking.html#smart-seamless-ar-tracking">SMART - Seamless AR Tracking</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="instanttracking.html#introduction">Introduction</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="instanttracking.html#basic-instant-tracking">Basic Instant Tracking</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="instanttracking.html#3d-model-on-plane">3D Model on Plane</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="instanttracking.html#interactivity">Interactivity</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="instanttracking.html#scene-interaction">Scene Interaction</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="objecttracking.html#object-tracking">Object Tracking</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="objecttracking.html#introduction-to-object-tracking">Introduction to Object Tracking</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="objecttracking.html#basic-object-tracking">Basic Object Tracking</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="objecttracking.html#2d-image-and-sound-augmentations">2D Image and Sound Augmentations</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="objecttracking.html#animated-3d-augmentations">Animated 3D Augmentations</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="gettingstartedcloudrecognition.html#cloud-recognition">Cloud Recognition</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="gettingstartedcloudrecognition.html#general-definitions">General Definitions</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="gettingstartedcloudrecognition.html#getting-started-with-the-cloud-recognition-service">Getting Started with the Cloud Recognition Service</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="gettingstartedcloudrecognition.html#regional-availability-of-wikitude-cloud-recognition-service">Regional availability of Wikitude Cloud Recognition Service</a>
+            
+        </li>
+    
+        <li>
+            <a href="gettingstartedcloudrecognition.html#preparation">Preparation</a>
+            
+        </li>
+    
+        <li>
+            <a href="gettingstartedcloudrecognition.html#first-steps-and-general-usage">First Steps and General Usage</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="gettingstartedcloudrecognition.html#authentication">Authentication</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="gettingstartedcloudrecognition.html#authentication-on-the-manager-api">Authentication on the Manager API</a>
+            
+        </li>
+    
+        <li>
+            <a href="gettingstartedcloudrecognition.html#authentication-on-the-client-api">Authentication on the Client API</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="gettingstartedcloudrecognition.html#quota-and-limits">Quota and Limits</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="gettingstartedcloudrecognition.html#general-upload-limit">General Upload Limit</a>
+            
+        </li>
+    
+        <li>
+            <a href="gettingstartedcloudrecognition.html#limits-for-the-wikitude-cloud-recognition-service">Limits for the Wikitude Cloud Recognition Service</a>
+            
+        </li>
+    
+        <li>
+            <a href="gettingstartedcloudrecognition.html#maximum-number-of-targets-in-a-target-collection">Maximum Number of Targets in a Target Collection</a>
+            
+        </li>
+    
+        <li>
+            <a href="gettingstartedcloudrecognition.html#free-trial-license-for-cloud-recognition">Free Trial License for Cloud Recognition</a>
+            
+        </li>
+    
+        <li>
+            <a href="gettingstartedcloudrecognition.html#commercial-licenses">Commercial Licenses</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="cloudrecognitionworkflow.html#your-first-target-collections">Your first Target Collections</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="cloudrecognitionworkflow.html#what-is-the-difference-between-cloud-archive-and-target-collection">What is the difference between Cloud Archive and Target Collection</a>
+            
+        </li>
+    
+        <li>
+            <a href="cloudrecognitionworkflow.html#structure-of-a-targetcollection">Structure of a TargetCollection</a>
+            
+        </li>
+    
+        <li>
+            <a href="cloudrecognitionworkflow.html#create-a-target-collection">Create a Target Collection</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="cloudrecognitionworkflow.html#add-target-images">Add Target Images</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="cloudrecognitionworkflow.html#structure-of-a-target">Structure of a Target</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="cloudrecognitionworkflow.html#generate-a-cloud-archive">Generate a Cloud Archive</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="cloudrecognitionworkflow.html#generate-a-wtc-file-via-api">Generate a WTC file via API</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="cloudrecognitionworkflow.html#additional-calls">Additional calls</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="cloudrecognition.html#cloud-recognition-sample">Cloud Recognition Sample</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="cloudrecognition.html#single-image-recognition">Single Image Recognition</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="cloudrecognition.html#regional-server-endpoints">Regional server endpoints</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="cloudrecognition.html#continuous-image-recognition">Continuous Image Recognition</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="cloudrecognition.html#using-metainformation-in-the-response">Using MetaInformation in the response</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="videocombinationcr.html#using-cloud-recognition-in-combination-with-video-drawables">Using Cloud Recognition in combination with Video Drawables</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="videocombinationcr.html#video-drawable-in-general">Video drawable in general</a>
+            
+        </li>
+    
+        <li>
+            <a href="videocombinationcr.html#video-drawable-in-combination-with-cloud-recognition">Video drawable in combination with cloud recognition</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="poi.html#geo-ar-points-of-interest">Geo AR (Points of Interest)</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="poi.html#poi-at-location">POI at Location</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="poi.html#poi-with-label">POI with Label</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="poi.html#multiple-pois">Multiple POIs</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="poi.html#selecting-pois">Selecting POIs</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="retrievingpoidata.html#retrieving-poi-data">Retrieving POI Data</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="retrievingpoidata.html#from-application-model">From Application Model</a>
+            
+        </li>
+    
+        <li>
+            <a href="retrievingpoidata.html#from-a-local-resource">From a Local Resource</a>
+            
+        </li>
+    
+        <li>
+            <a href="retrievingpoidata.html#from-a-webservice">From a Webservice</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="browsingpois.html#browsing-pois">Browsing POIs</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="browsingpois.html#presenting-details">Presenting Details</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="browsingpois.html#poi-and-ar-radar">POI and AR Radar</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="browsingpois.html#limiting-visible-pois">Limiting Visible POIs</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="browsingpois.html#reloading-poi-data">Reloading POI Data</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="browsingpois.html#displaying-native-detail-screen">Displaying Native Detail Screen</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="browsingpois.html#capture-screen-bonus">Capture Screen Bonus</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="solarsystemgeo.html#solar-system-geo">Solar System (Geo)</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="2dtrackingandgeo.html#combine-image-recognition-and-pois">Combine Image Recognition and POIs</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="3dmodels.html#3d-rendering">3D Rendering</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="3dmodels.html#3d-model-on-image-target">3D Model on Image Target</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="3dmodels.html#appearing-animation">Appearing Animation</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="3dmodels.html#interactivity">Interactivity</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="3dmodels.html#snap-to-screen">Snap to Screen</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="3dmodels.html#animation-of-model-parts">Animation of Model Parts</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="3dmodels.html#3d-model-at-geolocation">3D Model at GeoLocation</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="sdu-dbs.html#size-and-distances">Size and Distances</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="sdu-dbs.html#scaled-distance-units-sdus">Scaled Distance Units (SDUs)</a>
+            
+        </li>
+    
+        <li>
+            <a href="sdu-dbs.html#distance-based-scaling-dbs">Distance Based Scaling (DBS)</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="assetsworkflow.html#3d-assets-workflow">3D Assets Workflow</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="assetsworkflow.html#input-format">Input format</a>
+            
+        </li>
+    
+        <li>
+            <a href="assetsworkflow.html#features-that-are-not-yet-supported">Features that are not (yet) supported</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="assetsworkflow.html#good-practice-when-working-with-3d-models">Good practice when working with 3D models</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="assetsworkflow.html#resolving-problems">Resolving problems</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="assetsworkflow.html#working-with-3d-animations">Working with 3D Animations</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="assetsworkflow.html#lighting">Lighting</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="encoder.html#wikitude-3d-encoder">Wikitude 3D Encoder</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="encoder.html#how-to-install-wikitude-3d-encoder-on-windows-xp-windows-7-windows-8">How to install Wikitude 3D Encoder on Windows XP/ Windows 7/ Windows 8</a>
+            
+        </li>
+    
+        <li>
+            <a href="encoder.html#how-to-install-wikitude-3d-encoder-on-mac-os-x">How to install Wikitude 3D Encoder on Mac OS X</a>
+            
+        </li>
+    
+        <li>
+            <a href="encoder.html#supported-3d-models-input-files">Supported 3D Models (Input Files)</a>
+            
+        </li>
+    
+        <li>
+            <a href="encoder.html#the-wikitude-3d-encoder-user-interface">The Wikitude 3D Encoder user interface</a>
+            
+        </li>
+    
+        <li>
+            <a href="encoder.html#first-steps-using-the-wikitude-3d-encoder">First steps using the Wikitude 3D Encoder</a>
+            
+        </li>
+    
+        <li>
+            <a href="encoder.html#export-files-to-wt3">Export files to .wt3</a>
+            
+        </li>
+    
+        <li>
+            <a href="encoder.html#scene-graph-and-animations">Scene Graph and Animations</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="workingwithvideos.html#video-drawables">Video Drawables</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="workingwithvideos.html#fullscreen-videos">Fullscreen Videos</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="workingwithvideos.html#overlay-videos">Overlay Videos</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="workingwithvideos.html#overlay-videos-with-alpha-channel">Overlay Videos with alpha channel</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="workingwithvideos.html#self-hosted-videos">Self-hosted Videos</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="workingwithvideos.html#supported-video-codecs">Supported Video Codecs</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="video.html#general-notes-about-videos">General notes about videos</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="video.html#multiple-video-drawables">Multiple Video Drawables</a>
+            
+        </li>
+    
+        <li>
+            <a href="video.html#supported-video-codecs-and-hosting-services">Supported Video Codecs and Hosting Services</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="video.html#select-a-video-and-add-it-to-a-image-target">Select a Video and add it to a Image Target</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="video.html#control-video-playback">Control Video Playback</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="video.html#snapping-video">Snapping Video</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="video.html#transparent-video">Transparent Video</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="hardwarecontrol.html#hardware-control">Hardware control</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="hardwarecontrol.html#camera-settings">Camera Settings</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="hardwarecontrol.html#camera-position">Camera Position</a>
+            
+        </li>
+    
+        <li>
+            <a href="hardwarecontrol.html#camera-focus-mode">Camera Focus Mode</a>
+            
+        </li>
+    
+        <li>
+            <a href="hardwarecontrol.html#manual-camera-focus">Manual Camera Focus</a>
+            
+        </li>
+    
+        <li>
+            <a href="hardwarecontrol.html#camera2-api-usage">Camera2 API usage</a>
+            
+        </li>
+    
+        <li>
+            <a href="hardwarecontrol.html#camera-resolution">Camera Resolution</a>
+            
+        </li>
+    
+        <li>
+            <a href="hardwarecontrol.html#camera-zoom">Camera Zoom</a>
+            
+        </li>
+    
+        <li>
+            <a href="hardwarecontrol.html#flashlight">Flashlight</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="hardwarecontrol.html#front-camera">Front Camera</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="hardwarecontrol.html#camera-switching">Camera Switching</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="hardwarecontrol.html#advanced-features">Advanced Features</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="pluginsapi.html#plugins-api">Plugins API</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="pluginsapi.html#about-wikitude-sdk-plugins">About Wikitude SDK Plugins</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="pluginsapi.html#plugin-base-class">Plugin Base Class</a>
+            
+        </li>
+    
+        <li>
+            <a href="pluginsapi.html#information-about-recognized-targets">Information about Recognized Targets</a>
+            
+        </li>
+    
+        <li>
+            <a href="pluginsapi.html#platform-specifics">Platform Specifics</a>
+            
+        </li>
+    
+        <li>
+            <a href="pluginsapi.html#android-c-wikitude-plugin-library-build">Android C++ Wikitude Plugin Library Build</a>
+            
+        </li>
+    
+        <li>
+            <a href="pluginsapi.html#registering-plugins">Registering Plugins</a>
+            
+        </li>
+    
+        <li>
+            <a href="pluginsapi.html#register-c-plugin">Register C++ Plugin</a>
+            
+        </li>
+    
+        <li>
+            <a href="pluginsapi.html#register-java-plugin">Register Java Plugin</a>
+            
+        </li>
+    
+        <li>
+            <a href="pluginsapi.html#barcode-and-qr-code-reader">Barcode and QR code reader</a>
+            
+        </li>
+    
+        <li>
+            <a href="pluginsapi.html#face-detection">Face Detection</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="inputpluginsapi.html#input-plugins-api">Input Plugins API</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="inputpluginsapi.html#about-wikitude-sdk-input-plugins">About Wikitude SDK Input Plugins</a>
+            
+        </li>
+    
+        <li>
+            <a href="inputpluginsapi.html#input-plugin-base-class">Input Plugin Base Class</a>
+            
+        </li>
+    
+        <li>
+            <a href="inputpluginsapi.html#simple-input-plugin">Simple Input Plugin</a>
+            
+        </li>
+    
+        <li>
+            <a href="inputpluginsapi.html#custom-camera">Custom Camera</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="positionable.html#positionable">Positionable</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="positionable.html#introduction">Introduction</a>
+            
+        </li>
+    
+        <li>
+            <a href="positionable.html#prerequisites">Prerequisites</a>
+            
+        </li>
+    
+        <li>
+            <a href="positionable.html#javascript-implementation">JavaScript implementation</a>
+            
+        </li>
+    
+        <li>
+            <a href="positionable.html#plugin-implementation">Plugin implementation</a>
+            
+        </li>
+    
+        <li>
+            <a href="positionable.html#native-implementation">Native implementation</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="workflow.html#debugging">Debugging</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="workflow.html#run-the-architect-world-within-the-wikitude-world-browser-on-android">Run the ARchitect World within the Wikitude World Browser on Android</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="workflow.html#on-device-debugging-android">On-Device Debugging Android</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="ade.html#ade">ADE</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="ade.html#how-can-i-enable-the-ade-for-my-architect-file">How can I enable the ADE for my ARchitect file?</a>
+            
+        </li>
+    
+        <li>
+            <a href="ade.html#how-can-i-use-the-ade">How can I use the ADE?</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="logger.html#logger">Logger</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="targetmanagement.html#target-management">Target Management</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="targetmanagement.html#image-targets-create-and-manage">Image Targets: Create and Manage</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="targetmanagement.html#wikitude-studio-manager">Wikitude Studio Manager</a>
+            
+        </li>
+    
+        <li>
+            <a href="targetmanagement.html#use-projects-wtc-file-in-your-architect-world">Use project's WTC file in your ARchitect World</a>
+            
+        </li>
+    
+        <li>
+            <a href="targetmanagement.html#image-targets-for-cloud-recognition">Image Targets for Cloud Recognition</a>
+            
+        </li>
+    
+        <li>
+            <a href="targetmanagement.html#physical-height-for-image-targets">Physical Height for Image Targets</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="targetmanagement.html#object-targets-create-and-manage">Object Targets: Create and Manage</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="targetmanagement.html#create-a-video-of-your-object">Create a video of your object</a>
+            
+        </li>
+    
+        <li>
+            <a href="targetmanagement.html#convert-video-into-object-target-collection">Convert video into Object Target Collection</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="targetguide.html#best-practice-for-image-targets">Best practice for Image Targets</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="targetguide.html#summary">Summary</a>
+            
+        </li>
+    
+        <li>
+            <a href="targetguide.html#optimal-image-dimensions">Optimal Image Dimensions</a>
+            
+        </li>
+    
+        <li>
+            <a href="targetguide.html#low-contrast-images">Low contrast images</a>
+            
+        </li>
+    
+        <li>
+            <a href="targetguide.html#distribution-of-textured-areas">Distribution of textured areas</a>
+            
+        </li>
+    
+        <li>
+            <a href="targetguide.html#images-with-whitespace">Images with whitespace</a>
+            
+        </li>
+    
+        <li>
+            <a href="targetguide.html#vector-based-graphics">Vector-based graphics</a>
+            
+        </li>
+    
+        <li>
+            <a href="targetguide.html#images-with-a-lot-of-text">Images with a lot of text</a>
+            
+        </li>
+    
+        <li>
+            <a href="targetguide.html#repetitive-patterns">Repetitive patterns</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="objecttargetguide.html#best-practice-for-object-targets">Best practice for Object Targets</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="objecttargetguide.html#characteristics-of-easy-trackable-objects">Characteristics of easy trackable objects</a>
+            
+        </li>
+    
+        <li>
+            <a href="objecttargetguide.html#how-to-create-a-video-as-input-for-object-targets">How to create a video as input for Object Targets</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="targetversioning.html#targets-versioning">Targets Versioning</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="targetversioning.html#image-targets">Image Targets</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="reference.html#reference">Reference</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="reference.html#android-java-api">Android Java API</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="reference.html#javascript-api">JavaScript API</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="reference.html#cloud-recognition-manager-api">Cloud Recognition Manager API</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="migration.html#migration">Migration</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="migration.html#migrate-from-71-to-72">Migrate from 7.1 to 7.2</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="migration.html#migrate-from-70-to-71">Migrate from 7.0 to 7.1</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="migration.html#migrate-from-61-to-70">Migrate from 6.1 to 7.0</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="migration.html#migrate-from-60-to-61">Migrate from 6.0 to 6.1</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="migration.html#migrate-from-53-to-60">Migrate from 5.3 to 6.0</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="migration.html#migrate-from-52-to-53">Migrate from 5.2 to 5.3</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="migration.html#migrate-from-41-to-50">Migrate from 4.1 to 5.0</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="migration.html#migrate-from-40-to-41">Migrate from 4.0 to 4.1</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="migration.html#migrate-from-33-to-40">Migrate from 3.3 to 4.0</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="migration.html#migrate-from-32-to-33">Migrate from 3.2 to 3.3</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="migration.html#migrate-from-31-to-32">Migrate from 3.1 to 3.2</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="migration.html#migrate-from-30-to-31">Migrate from 3.0 to 3.1</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="migration.html#image-recognition-and-tracking">Image Recognition and Tracking</a>
+            
+        </li>
+    
+        <li>
+            <a href="migration.html#html-drawables">HTML Drawables</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="migration.html#migrate-from-20-to-30">Migrate from 2.0 to 3.0</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="migration.html#upgrading-targets-for-sdk-60-and-later">Upgrading targets for SDK 6.0 (and later)</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="migration.html#upgrading-targets-for-sdk-41">Upgrading targets for SDK 4.1</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="migration.html#migrating-targets-from-sdk-1x">Migrating targets from SDK 1.x</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#release-notes-wikitude-sdk">Release Notes Wikitude SDK</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-720">Wikitude SDK 7.2.0</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="changelog.html#new">New</a>
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#improved">Improved</a>
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#fixed">Fixed</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-710">Wikitude SDK 7.1.0</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="changelog.html#new">New</a>
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#improved">Improved</a>
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#fixed">Fixed</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-700">Wikitude SDK 7.0.0</a>
+            
+                
+    <ul>
+    
+        <li>
+            <a href="changelog.html#new">New</a>
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#improved">Improved</a>
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#fixed">Fixed</a>
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-javascript-api-610">Wikitude SDK JavaScript API 6.1.0</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-javascript-api-601">Wikitude SDK JavaScript API 6.0.1</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-javascript-api-600">Wikitude SDK JavaScript API 6.0.0</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-javascript-api-531">Wikitude SDK JavaScript API 5.3.1</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-javascript-api-530">Wikitude SDK JavaScript API 5.3.0</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-javascript-api-520">Wikitude SDK JavaScript API 5.2.0</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-javascript-api-514">Wikitude SDK JavaScript API 5.1.4</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-javascript-api-513">Wikitude SDK JavaScript API 5.1.3</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-javascript-api-512">Wikitude SDK JavaScript API 5.1.2</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-javascript-api-511">Wikitude SDK JavaScript API 5.1.1</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-javascript-api-510">Wikitude SDK JavaScript API 5.1.0</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-javascript-api-500">Wikitude SDK JavaScript API 5.0.0</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-javascript-api-411">Wikitude SDK JavaScript API 4.1.1</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-javascript-api-410">Wikitude SDK JavaScript API 4.1.0</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-javascript-api-403-drc">Wikitude SDK JavaScript API 4.0.3 DRC</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-javascript-api-403">Wikitude SDK JavaScript API 4.0.3</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-javascript-api-402">Wikitude SDK JavaScript API 4.0.2</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-javascript-api-401">Wikitude SDK JavaScript API 4.0.1</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-javascript-api-400">Wikitude SDK JavaScript API 4.0.0</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-javascript-api-332">Wikitude SDK JavaScript API 3.3.2</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-javascript-api-331">Wikitude SDK JavaScript API 3.3.1</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-javascript-api-330">Wikitude SDK JavaScript API 3.3.0</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-javascript-api-321">Wikitude SDK JavaScript API 3.2.1</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-javascript-api-320">Wikitude SDK JavaScript API 3.2.0</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-javascript-api-310">Wikitude SDK JavaScript API 3.1.0</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-javascript-api-301">Wikitude SDK JavaScript API 3.0.1</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-javascript-api-300">Wikitude SDK JavaScript API 3.0.0</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-javascript-api-200">Wikitude SDK JavaScript API 2.0.0</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-javascript-api-120">Wikitude SDK JavaScript API 1.2.0</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-javascript-api-111">Wikitude SDK JavaScript API 1.1.1</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-javascript-api-110">Wikitude SDK JavaScript API 1.1.0</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-javascript-api-105">Wikitude SDK JavaScript API 1.0.5</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-javascript-api-104">Wikitude SDK JavaScript API 1.0.4</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+        <li>
+            <a href="changelog.html#wikitude-sdk-javascript-api-103">Wikitude SDK JavaScript API 1.0.3</a>
+            
+                
+    <ul>
+    
+</ul>
+
+            
+        </li>
+    
+</ul>
+
+            
+        </li>
+    
+</ul>
+
+        </nav>
+        
+        <nav id="links">
+            <ul>
+                
+            </ul>
+        </nav>
+        
+    </div>
+</div>
+        <div id="wrapper">
+            <div id="content">
+                <h1 id="getting-started">Getting started</h1>
+<h2 id="introduction-to-the-wikitude-sdk">Introduction to the Wikitude SDK</h2>
+<p class='intro' markdown='1'>Welcome to the Wikitude SDK. This document is designed to help you from your very first steps with the Wikitude SDK all the way through to advanced concepts and examples for developing your augmented reality project.</p>
+
+<h3 id="recommended-usage-of-this-documentation">Recommended Usage of this Documentation</h3>
+<p>The documentation is arranged in a way to guide you through the various steps in your development process. We recommend  following each of the steps outlined below and reading the documentation in the order displayed.</p>
+<div class="bigNumbers" markdown='1'>
+<div class='number'>1</div>
+<h4 id="-setup-your-project-setupguideandroid-html-"><a href="setupguideandroid.html">Setup your project</a></h4>
+<p>In this section we describe the necessary steps to setup a project in a detailed guide.</p>
+<div class='number'>2</div>
+<h4 id="-view-the-samples-samples-html-"><a href="samples.html">View the samples</a></h4>
+<p>All of the included samples are complete augmented reality experiences which run in <code>SDKExamples</code> app. Browse through this section and get an idea of what the SDK is capable of. The relevant parts of the samples are described in more detail to highlight the applied concepts and patterns. These examples are designed to help you get off to a great start with the Wikitude SDK.</p>
+<p>Viewing samples based on vision based augmented reality requires the corresponding reference images. All of them are available directly in the description of the sample or available as a collection <a href="targetimages.html">on this page</a>, which you can either view on the screen or print.</p>
+<div class='number'>3</div>
+<h4 id="-write-your-own-architect-world-workflow-html-"><a href="workflow.html">Write your own Architect World</a></h4>
+<p>This section will introduce you to best practices for your development workflow once you write your own code for your augmented reality experience.</p>
+<h3 id="the-wikitude-sdk-augmented-reality-for-your-own-app">The Wikitude SDK - Augmented Reality for your own app</h3>
+<p>The Wikitude SDK is a software library and framework for mobile apps used to create augmented reality experiences. The SDK supports any kind of location based use case as well as use cases which require image recognition and tracking technology (vision based augmented reality). </p>
+<h3 id="architecture-of-the-wikitude-sdk">Architecture of the Wikitude SDK</h3>
+<p><img src="images/sdk7_architecture.png" alt=""></p>
+<p>The image above shows the different components of the Wikitude SDK and possible approaches for creating augmented reality apps. Each of these approaches are based on a certain development environments (IDE) and platforms:</p>
+<ul>
+<li><strong>Computer Vision Engine:</strong> The computer vision engine is a core component of the Wikitude SDK and used by all platforms. It includes three major parts in its own: <strong>SLAM Engine</strong>, <strong>Image Recognition Engine</strong> and the <strong>Cloud Recognition engine</strong> It is not directly accessible, but wrapped either by the Native API (Java, Obj-C) or the JavaScript API.</li>
+<li><strong>Wikitude SDK  - Native API:</strong> Provides access to the Wikitude computer vision engine natively for Android (Java) and iOS (ObjC). It also can load plugins via the Wikitude Plugins API. </li>
+<li><strong>Wikitude SDK  - JavaScript API:</strong> Allows to build augmented reality worlds on basis of HTML and JavaScript. It is available for Android and iOS. The JavaScript API provides access to the functionality of the computer vision engine, location based AR, the Plugins API and dedicated rendering functionality.</li>
+<li><strong>Wikitude SDK  - Plugins API:</strong> An API to connect your own plugins to the Wikitude SDK. (NOTE: Wikitude SDK plugins have nothing to do with the Cordova or Unity Plugin concept.)</li>
+<li><strong>Wikitude SDK  - Cordova Plugin:</strong> On top of the JavaScript API the Cordova plugin allows to use the Wikitude SDK in combination with Apache Cordova.</li>
+<li><strong>Wikitude SDK  - Titanium Module:</strong> On top of the JavaScript API the Titanium module allows to use the Wikitude SDK in combination with Titanium.</li>
+<li><strong>Wikitude SDK  - Unity3D Plugin:</strong> On top of the Native API the Unity plugin allows to use the Wikitude SDK in combination with Unity.</li>
+<li><strong>Wikitude SDK  - Xamarin Component:</strong> On top of the JavaScript API the Xamarin component allows to use the Wikitude SDK in combination with Xamarin.</li>
+</ul>
+<h3 id="how-to-code-for-the-wikitude-sdk">How to code for the Wikitude SDK</h3>
+<p>The Wikitude SDK builds heavily on web technologies (HTML, JavaScript, CSS) to allow developers to write cross platform augmented reality experiences. These augmented reality experiences are called ARchitect worlds and are ordinary HTML pages that can utilize the ARchitect API to create objects in augmented reality.</p>
+<p>Integrating the Wikitude SDK into your application is done by adding the platform specific view component called <code>ARchitectView</code> to your applications user interface. See the setup guide for how to setup projects and load an ARchitect World.</p>
+<p>Get started with writing augmented reality experiences by browsing through the examples included in the SDK package. Each example is explained in detail in this documentation. Additional information about the ARchitect API can be found in the included API specification.</p>
+<h3 id="the-wikitude-developer-portal">The Wikitude Developer Portal</h3>
+<p>The Wikitude Developer Section should be your first stop when you have specific development related questions. The portal hosts a very active <a href="https://support.wikitude.com/support/home" target="_top">Developer Community Forum</a> where Wikitude staff members are constantly assisting other developers with helpful tips and advice. You can find How-To&#39;s and a constantly evolving FAQ section there as well.</p>
+<h3 id="feedback-and-contact">Feedback and Contact</h3>
+<p>We are always interested in your feedback and suggestions how we can improve this documentation. Please use the <a href="http://www.wikitude.com/contact" target="_top">contact form</a> on our website or visit us on <a href="https://plus.google.com/103004921345651739447/" target="_top">Google+</a>,  <a href="https://www.facebook.com/WIKITUDE" target="_top">Facebook</a> or <a href="https://www.twitter.com/wikitude" target="_top">Twitter</a>.</p>
+
+                <footer id="footer">
+                    &copy; 2012 -2017 <a href="https://www.wikitude.com">Wikitude GmbH</a> · <a href="https://www.wikitude.com/imprint">Imprint</a>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+
+            var storageKey = "android" + "7.2.0";
+            function stateChanged(nodes, nodesJson) {
+                localStorage.setItem(storageKey, JSON.stringify(nodesJson));
+            }
+
+            function getData() {
+                var data = localStorage.getItem(storageKey);
+                if (data) return JSON.parse(data);
+            }
+
+            var easytree = $("#toc").easytree({
+                data: getData(),
+                stateChanged: stateChanged
+            });
+
+            $('.easytree-exp-e .easytree-title').each(function () {
+                let openItem = $(this).parent();
+                var openItemId = openItem.attr('id');
+                var activeChildItem = openItem.parent().find('ul li .easytree-active');
+
+                if (!activeChildItem.length) {
+                    easytree.toggleNode(openItemId);
+                }
+            });
+
+            var activeItem = $('.easytree-active.easytree-exp-c .easytree-title');
+
+            if (activeItem) {
+                var activeItemId = activeItem.closest('.easytree-active').attr('id');
+                easytree.toggleNode(activeItemId);
+            }
+        });
+    </script>
+
+</body>
+    <script>
+    var lightbox = new Lightbox();
+    lightbox.load();
+    hljs.initHighlightingOnLoad();
+    </script>
+
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-11754809-8', 'auto');
+		ga('require', 'displayfeatures');
+		ga('set', 'checkProtocolTask', null);
+		ga('send', 'pageview');
+
+</script>
+</html>

@@ -1,0 +1,14 @@
+<resources>
+    <dimen name="text_zize">50dp</dimen>
+    <dimen name="width_btn">300dp</dimen>
+    <dimen name="height_btn">70dp</dimen>
+    <dimen name="margin_btn">90dp</dimen>
+    <dimen name="width_img">180dp</dimen>
+    <dimen name="height_img">180dp</dimen>
+    <dimen name="margin_img">135dp</dimen>
+    <dimen name="step">80dp</dimen>
+    <dimen name="margin_left">160dp</dimen>
+    <dimen name="margin_botom">205dp</dimen>
+    <dimen name="logotype">350dp</dimen>
+
+</resources>

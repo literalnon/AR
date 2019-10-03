@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">ZRENIE 2.0</string>
+    <string name="n_zrenie_2_0">НАВЕДИ КАМЕРУ НА ИЗОБРАЖЕНИЕ\nС ЛОГОТИПОМ ZRENIE 2.0</string>
+    <string name="clicked">КЛИКАЙ НА ВСПЛЫВАЮЩИЕ ИКОНКИ:\nУДИВЛЯЙСЯ, ДЕЛИСЬ, РАЗВЛЕКАЙСЯ!</string>
+    <string name="click_on_pop">CLICK ON POP-ICONS:\nBE SURPRISED, SHARE, HAVE FUN!</string>
+    <string name="logo">logo</string>
+    <string name="n_zrenie_2_0_ru">НАВЕДИ КАМЕРУ НА ОБЪЕКТ\nС ЛОГОТИПОМ ZRENIE 2.0…\nИЛИ НА РОДНУЮ ОБЛОЖКУ\nСВОЕГО ПАСПОРТА</string>
+    <string name="n_zrenie_2_0_uk">НАВЕДІТЬ КАМЕРУ НА ОБ\'ЄКТ\nЗ ЛОГОТИПОМ ZRENIE 2.0...\nАБО НА РІДНУ ОБКЛАДИНКУ\nВАШОГО ПАСПОРТИ</string>
+    <string name="n_zrenie_2_0_sp">APUNTA LA CÁMARA A UN OBJETO\nCON EL LOGOTIPO ZRENIE 2.0...\nO REVISE LA CUBIERTA NATIVA\nDE SU PASAPORTE</string>
+    <string name="n_zrenie_2_0_ital">PUNTA LA FOTOCAMERA ALL\'OGGETTO\nCON IL LOGO ZRENIE 2.0...\nO CONTROLLA LA COPERTURA\nNATIVA DEL TUO PASSAPORTO</string>
+    <string name="n_zrenie_2_0_fra">POIGNEZ LA CAMÉRA SUR L\'OBJET\nAVEC LE LOGO ZRENIE 2.0...\nOU VÉRIFIEZ LA COUVERTURE\nINDIGÈNE DE VOTRE PASSEPORT</string>
+    <string name="n_zrenie_2_0_ger">RICHTEN SIE DIE KAMERA AN DAS\nOBJEKT MIT LOGO ZRENIE 2.0...\nODER ÜBERPRÜFEN SIE DEN NATIVE\nCOVER IHRES PASSPORTS</string>
+    <string name="n_zrenie_2_0_britan">POINT THE CAMERA AT THE OBJECT\nWITH LOGO ZRENIE 2.0...\nOR CHECK THE NATIVE COVER\nOF YOUR PASSPORT</string>
+    <string name="n_zrenie_2_0_china">将相机对准带有ZRENIE 2.0徽标的物体......\n或检查护照的原始封面</string>
+
+    <string name="n_zrenie_2_0_1_ru">БУДЬ В КУРСЕ ВАЖНЫХ СОБЫТИЙ,\nПОСЛЕДНИХ ПРОМО-АКЦИЙ ИЛИ\nПОЛЕЗНЫХ СОВЕТОВ</string>
+    <string name="n_zrenie_2_0_1_uk">БУДЬ В КУРСІ ВАЖЛИВИХ ПОДІЙ,\nОСТАННІХ ПРОМО-АКЦІЙ АБО\nКОРИСНИХ ПОРАД</string>
+    <string name="n_zrenie_2_0_1_sp">ESTAR EN EL CURSO DE EVENTOS\nIMPORTANTES, ÚLTIMAS PROMOCIONES\nO CONSEJOS ÚTILES</string>
+    <string name="n_zrenie_2_0_1_ital">ESSERE NEL CORSO DI EVENTI\nIMPORTANTI, ULTIME PROMOZIONI\nO CONSIGLI UTILI</string>
+    <string name="n_zrenie_2_0_1_fra">ÊTRE DANS LE COURS D\'ÉVÉNEMENTS\nIMPORTANTS, DERNIERS PROMOTIONS\nOU CONSEILS UTILES</string>
+    <string name="n_zrenie_2_0_1_ger">SEIEN SIE IN EINEM KURS VON\nWICHTIGEN EREIGNISSEN, DIE LETZTEN\nPROMOTIONEN ODER NÜTZLICHE\nHINWEISE</string>
+    <string name="n_zrenie_2_0_1_britan">BE IN THE COURSE OF IMPORTANT\nEVENTS, LATEST PROMOTIONS\nOR USEFUL ADVICE</string>
+    <string name="n_zrenie_2_0_1_china">了解重要事件，最新促销或有用的建议</string>
+
+    <string name="preview_screen_first_title">наверди камеру на обьект с логотипом zrenie 2.0 или на родную обложку паспорта</string>
+    <string name="preview_screen_second_title">используйте экран телефона, чтобы управлять зумом камеры или сделать фото / видео</string>
+    <string name="preview_screen_third_title">активируйте режим geo-ar через меню, чтобы получить доступ к gps ar контенту</string>
+    <string name="preview_screen_button">ваш новый взгляд на мир</string>
+    <string name="preview_screen_button_start">Начать</string>
+</resources>

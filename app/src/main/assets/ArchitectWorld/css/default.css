@@ -1,0 +1,26 @@
+.info {
+	font-size: large;
+	position: absolute;
+	width: 100%;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	background-color: #BBBBBB;
+	text-align: center;
+	top: 0;
+	left: 0;
+	opacity: 0.7;
+	display: table;
+}
+
+
+.label {
+    font-size: large;
+    width: 200px;
+    height: 100px;
+    overflow: auto;
+    position: absolute;
+    bottom: 0;
+    opacity: 1.0;
+    background-color: #BBBBBB;
+    
+}

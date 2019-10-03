@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_zize">50dp</dimen>
+    <dimen name="width_btn">400dp</dimen>
+    <dimen name="height_btn">100dp</dimen>
+    <dimen name="margin_btn">70dp</dimen>
+    <dimen name="width_img">300dp</dimen>
+    <dimen name="height_img">300dp</dimen>
+    <dimen name="margin_img">140dp</dimen>
+    <dimen name="step">60dp</dimen>
+    <dimen name="margin_left">170dp</dimen>
+    <dimen name="margin_botom">250dp</dimen>
+    <dimen name="logotype">350dp</dimen>
+
+</resources>
