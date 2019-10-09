@@ -24,7 +24,11 @@ import java.io.IOException;
 public class SimpleArActivity extends AppCompatActivity {
 
     public static final String INTENT_EXTRAS_KEY_SAMPLE = "sampleData";
+
     public static final String ACTIVITY_ARCHITECT_WORLD_URL = "https://storage.cloud.croc.ru/zrenie.kudinov/experience/index.html";
+    public static final String ACTIVITY_ARCHITECT_WORLD_GEO_URL = "https://storage.cloud.croc.ru/zrenie.kudinov/geo/index.html";
+
+    public static String currentWorld = ACTIVITY_ARCHITECT_WORLD_URL;
 
     private static final String TAG = SimpleArActivity.class.getSimpleName();
 
@@ -111,7 +115,7 @@ public class SimpleArActivity extends AppCompatActivity {
              * To get notified once the AR-Experience is fully loaded,
              * an ArchitectWorldLoadedListener can be registered.
              */
-            architectView.load(ACTIVITY_ARCHITECT_WORLD_URL);//SAMPLES_ROOT + arExperience);//
+            architectView.load(currentWorld);//SAMPLES_ROOT + arExperience);//
         } catch (IOException e) {
             //Toast.makeText(this, getString(R.string.error_loading_ar_experience), Toast.LENGTH_SHORT).show();
             Log.e(TAG, "Exception while loading arExperience " + arExperience + ".", e);

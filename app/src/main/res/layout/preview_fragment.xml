@@ -26,13 +26,14 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:text="@string/preview_screen_button_start"
+            android:textColor="@color/colorPrimary"
             android:textAllCaps="true"
             android:textSize="20dp"
             android:textStyle="bold" />
 
     </FrameLayout>
 
-    <ImageView
+    <android.support.v7.widget.AppCompatImageView
         android:id="@+id/imageView11"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -47,7 +48,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         app:srcCompat="@drawable/geo_ar_150" />
 
-    <ImageView
+    <android.support.v7.widget.AppCompatImageView
         android:id="@+id/imageView12"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -179,6 +180,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
+        android:textColor="@color/colorPrimary"
         android:text="@string/preview_screen_second_title"
         android:textAllCaps="true"
         android:textSize="16sp"
@@ -192,6 +194,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
+        android:textColor="@color/colorPrimary"
         android:text="@string/preview_screen_third_title"
         android:textAllCaps="true"
         android:textSize="16sp"
@@ -205,6 +208,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
+        android:textColor="@color/colorPrimary"
         android:text="@string/preview_screen_first_title"
         android:textAllCaps="true"
         android:textSize="16sp"
@@ -217,6 +221,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:textColor="@color/colorPrimary"
         android:text="@string/preview_screen_button"
         android:textAllCaps="true"
         android:textSize="16sp"

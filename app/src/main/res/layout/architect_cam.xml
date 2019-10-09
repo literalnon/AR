@@ -7,7 +7,6 @@
 	xmlns:fab="http://schemas.android.com/tools">
 
 	<com.wikitude.architect.ArchitectView
-
 		android:id="@+id/architectView"
 		android:layout_width="0dp"
 		android:layout_height="0dp"
@@ -67,15 +66,6 @@
 			app:fab_colorPressed="@android:color/white" />
 
 		<com.getbase.floatingactionbutton.FloatingActionButton
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:id="@+id/switchCameraFab"
-			app:fab_colorNormal="@android:color/white"
-			app:fab_colorPressed="@android:color/white"
-			app:fab_icon="@drawable/cameraflip_150"
-			/>
-
-		<com.getbase.floatingactionbutton.FloatingActionButton
 			android:id="@+id/flashSwitcher"
 			android:background="@android:color/white"
 			android:layout_width="wrap_content"
@@ -83,6 +73,15 @@
 			app:fab_icon="@drawable/flash_150"
 			app:fab_colorNormal="@android:color/white"
 			app:fab_colorPressed="@android:color/white" />
+
+		<com.getbase.floatingactionbutton.FloatingActionButton
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/switchCameraFab"
+			app:fab_colorNormal="@android:color/white"
+			app:fab_colorPressed="@android:color/white"
+			app:fab_icon="@drawable/cameraflip_150"
+			/>
 
 	</com.getbase.floatingactionbutton.FloatingActionsMenu>
 

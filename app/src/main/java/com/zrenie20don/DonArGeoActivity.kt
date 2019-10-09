@@ -5,8 +5,10 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.media.MediaScannerConnection
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Environment
+import android.support.annotation.RequiresApi
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -21,18 +23,21 @@ class DonArGeoActivity : SimpleGeoArActivity() {
 
     // Used to detect pinch zoom gesture.
     private var scaleGestureDetector: ScaleGestureDetector? = null
-    private var recordActivity = RecordActivity()
+    private var recordActivity: ScreenRecordActivity? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         tvTime?.text = ""
 
-        recordActivity.onCreate(videoButton, View.OnClickListener {
-            recordActivity.onClick()
-        }, {
-            tvTime?.text = it
-        }, mainLayout)
+        videoButton?.let {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                recordActivity = ScreenRecordActivity(this)
+                recordActivity?.onCreate(it)
+            } else {
+                it.visibility = View.GONE
+            }
+        }
 
         foto_button.setOnClickListener(View.OnClickListener {
             try {
@@ -94,8 +99,16 @@ class DonArGeoActivity : SimpleGeoArActivity() {
             switchCameraIsChecked = !switchCameraIsChecked
         }
 
+
         geoArSwitcher?.setOnClickListener {
-            loadPoiFromJson(currentLocation.latitude, currentLocation.longitude)
+            architectView.cullingDistance = 800f
+            if (SimpleArActivity.currentWorld == ACTIVITY_ARCHITECT_WORLD_URL) {
+                SimpleArActivity.currentWorld = SimpleArActivity.ACTIVITY_ARCHITECT_WORLD_GEO_URL
+            } else {
+                SimpleArActivity.currentWorld = SimpleArActivity.ACTIVITY_ARCHITECT_WORLD_URL
+            }
+            architectView.load(SimpleArActivity.currentWorld)
+            //loadPoiFromJson(currentLocation.latitude, currentLocation.longitude)
         }
 
         informationFab?.setOnClickListener {
@@ -153,15 +166,30 @@ class DonArGeoActivity : SimpleGeoArActivity() {
         }
     }
 
-    private fun loadPoiFromJson(lat: Double, lon: Double) {
+    /*private fun loadPoiFromJson(lat: Double, lon: Double) {
         architectView.callJavascript(
                 """AR.context.onLocationChanged = World.locationChanged;""".trimIndent()
         )
+    }*/
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            recordActivity?.onActivityResult(requestCode, resultCode, data)
+        }
+        super.onActivityResult(requestCode, resultCode, data)
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            recordActivity?.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
     override fun onDestroy() {
         super.onDestroy()
-
-        recordActivity.onDestroy()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            recordActivity?.onDestroy()
+        }
     }
 }
