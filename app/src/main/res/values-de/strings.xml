@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="preview_screen_first_title">RICHTEN SIE DIE KAMERA AN DAS OBJECT MIT LOGO ZRENIE 2.0 ODER ÜBERPRÜFEN SIE DIE NATIVE COVER IHRES PASSPORTS</string>
+    <string name="preview_screen_second_title">BENUTZEN SIE DEN TELEFONBILDSCHIRM, UM DEN KAMERAZOOM ZU STEUERN ODER EIN FOTO / VIDEO AUFZUNEHMEN</string>
+    <string name="preview_screen_third_title">AKTIVIEREN SIE DEN GEO-AR-MODUS ÜBER DAS MENÜ, UM ZUGRIFF AUF DEN GPS-AR-INHALT ZU ERHALTEN</string>
+    <string name="preview_screen_button">IHR NEUER BLICK AUF DIE WELT</string>
+    <string name="preview_screen_button_start">ERÖFFNEN</string>
+
+</resources>

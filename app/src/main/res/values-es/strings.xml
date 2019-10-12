@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="preview_screen_first_title">SEÑALA LA CÁMARA AL OBJETO CON LOGO ZRENIE 2.0 O COMPRUEBE LA CUBIERTA NATIVA DE SU PASAPORTE</string>
+    <string name="preview_screen_second_title">UTILICE LA PANTALLA DEL TELÉFONO PARA CONTROLAR EL ZOOM DE LA CÁMARA O HAGA UNA FOTO / VIDEO</string>
+    <string name="preview_screen_third_title">ACTIVAR EL MODO GEO-AR A TRAVÉS DEL MENÚ PARA ACCEDER AL CONTENIDO GPS AR</string>
+    <string name="preview_screen_button">TU NUEVA MIRADA AL MUNDO</string>
+    <string name="preview_screen_button_start">EMPEZAR</string>
+
+</resources>

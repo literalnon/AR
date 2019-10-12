@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="preview_screen_first_title">PUNTA LA FOTOCAMERA ALL\'OGGETTO CON LOGO ZRENIE 2.0 O CONTROLLA IL COPERCHIO NATIVO DEL TUO PASSAPORTO</string>
+    <string name="preview_screen_second_title">UTILIZZARE LO SCHERMO DEL TELEFONO PER CONTROLLARE LO ZOOM DELLA FOTOCAMERA O PER RIPRENDERE UNA FOTO / VIDEO</string>
+    <string name="preview_screen_third_title">ATTIVA LA MODALITÀ GEO-AR ATTRAVERSO IL MENU PER OTTENERE L\'ACCESSO AL CONTENUTO AR GPS</string>
+    <string name="preview_screen_button">IL TUO NUOVO LOOK AL MONDO</string>
+    <string name="preview_screen_button_start">INIZIO</string>
+
+</resources>

@@ -1,6 +1,7 @@
 package com.zrenie20don;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -147,5 +148,4 @@ public class SimpleArActivity extends AppCompatActivity {
         architectView.clearCache();
         architectView.onDestroy(); // Mandatory ArchitectView lifecycle call
     }
-
 }

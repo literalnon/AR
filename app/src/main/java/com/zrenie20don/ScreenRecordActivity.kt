@@ -14,6 +14,7 @@ import android.media.projection.MediaProjectionManager
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
+import android.os.Handler
 import android.provider.Settings
 import android.support.annotation.RequiresApi
 import android.support.design.widget.Snackbar
@@ -25,15 +26,22 @@ import android.util.Log
 import android.util.SparseIntArray
 import android.view.Surface
 import android.view.View
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.Toast
-import android.widget.ToggleButton
+import android.widget.*
 import java.io.IOException
 import java.util.*
+import kotlin.collections.ArrayList
+
+interface ITimeChangedListener{
+    fun timerStart()
+    fun timerChange(time: Long)
+    fun timerEnd()
+}
 
 @RequiresApi(21)
-class ScreenRecordActivity(private val activity: AppCompatActivity) {
+class ScreenRecordActivity(
+        private val activity: AppCompatActivity,
+        private val timeChangedListener: ITimeChangedListener
+) {
     private var mScreenDensity: Int = 0
     private var mProjectionManager: MediaProjectionManager? = null
     private var mMediaProjection: MediaProjection? = null
@@ -41,29 +49,39 @@ class ScreenRecordActivity(private val activity: AppCompatActivity) {
     private var mMediaProjectionCallback: MediaProjectionCallback? = null
     private var mToggleButton: ToggleButton? = null
     private var mMediaRecorder: MediaRecorder? = null
+    private val handler = Handler()
+    private var runnable: Runnable? = null
+    private var timer = 0L
 
-    fun onCreate(mToggleButton: View) {
+    fun onCreate(mToggleButton: ArrayList<View>) {
         val metrics = DisplayMetrics()
         activity.windowManager.defaultDisplay.getMetrics(metrics)
         mScreenDensity = metrics.densityDpi
         mMediaRecorder = MediaRecorder()
         mProjectionManager = activity.getSystemService(Context.MEDIA_PROJECTION_SERVICE) as MediaProjectionManager
+        runnable = Runnable {
+            timer += 1
+            timeChangedListener.timerChange(timer)
+            handler.postDelayed(runnable, 1000)
+        }
 
-        mToggleButton!!.setOnClickListener { v ->
-            if (ContextCompat.checkSelfPermission(activity,
-                            Manifest.permission.WRITE_EXTERNAL_STORAGE) + ContextCompat
-                            .checkSelfPermission(activity,
-                                    Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
-                if (ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE) || ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.RECORD_AUDIO)) {
+        mToggleButton.forEach {
+            it.setOnClickListener { v ->
+                if (ContextCompat.checkSelfPermission(activity,
+                                Manifest.permission.WRITE_EXTERNAL_STORAGE) + ContextCompat
+                                .checkSelfPermission(activity,
+                                        Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+                    if (ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE) || ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.RECORD_AUDIO)) {
 
+                    } else {
+                        ActivityCompat.requestPermissions(activity,
+                                arrayOf(Manifest.permission
+                                        .WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO),
+                                REQUEST_PERMISSIONS)
+                    }
                 } else {
-                    ActivityCompat.requestPermissions(activity,
-                            arrayOf(Manifest.permission
-                                    .WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO),
-                            REQUEST_PERMISSIONS)
+                    onToggleScreenShare()
                 }
-            } else {
-                onToggleScreenShare()
             }
         }
     }
@@ -88,11 +106,23 @@ class ScreenRecordActivity(private val activity: AppCompatActivity) {
         if (!running) {
             initRecorder()
             shareScreen()
+
+            timer = 0
+            timeChangedListener.timerStart()
+            handler.postDelayed(runnable, 1000)
         } else {
-            mMediaRecorder!!.stop()
-            mMediaRecorder!!.reset()
+            try {
+                mMediaRecorder?.stop()
+                mMediaRecorder?.reset()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
             stopScreenSharing()
+
+            timeChangedListener.timerEnd()
+            handler.removeCallbacks(runnable)
         }
+
         running = !running
     }
 

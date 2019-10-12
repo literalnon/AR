@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="preview_screen_first_title">POINT THE CAMERA AT THE OBJECT WITH LOGO ZRENIE 2.0 OR CHECK THE NATIVE COVER OF YOUR PASSPORT</string>
+    <string name="preview_screen_second_title">USE PHONE SCREEN TO CONTROL THE CAMERA ZOOM OR SHOOT A PHOTO / VIDEO</string>
+    <string name="preview_screen_third_title">ACTIVATE GEO-AR MODE THROUGH THE MENU TO GET ACCESS TO THE GPS AR CONTENT</string>
+    <string name="preview_screen_button">YOUR NEW LOOK AT THE WORLD</string>
+    <string name="preview_screen_button_start">BEGIN</string>
+
+</resources>

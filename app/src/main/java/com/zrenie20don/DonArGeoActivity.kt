@@ -2,6 +2,7 @@ package com.zrenie20don
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.media.MediaScannerConnection
 import android.net.Uri
@@ -18,10 +19,18 @@ import java.util.*
 import android.view.ScaleGestureDetector
 import android.view.MotionEvent
 import kotlinx.android.synthetic.main.architect_cam.*
+import org.threeten.bp.LocalDateTime
+import org.threeten.bp.ZoneId
+import org.threeten.bp.ZoneOffset
+import org.threeten.bp.ZonedDateTime
+import org.threeten.bp.format.DateTimeFormatter
 
 class DonArGeoActivity : SimpleGeoArActivity() {
 
-    // Used to detect pinch zoom gesture.
+    companion object {
+        const val TIME_FORMAT = "HH:mm:ss"
+    }
+
     private var scaleGestureDetector: ScaleGestureDetector? = null
     private var recordActivity: ScreenRecordActivity? = null
 
@@ -32,14 +41,77 @@ class DonArGeoActivity : SimpleGeoArActivity() {
 
         videoButton?.let {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                recordActivity = ScreenRecordActivity(this)
-                recordActivity?.onCreate(it)
+                recordActivity = ScreenRecordActivity(this, object : ITimeChangedListener {
+                    override fun timerStart() {
+
+                        if (fab.visibility == View.VISIBLE) {
+                            fab?.visibility = View.INVISIBLE
+                            foto_button?.visibility = View.INVISIBLE
+
+                            fab?.isEnabled = false
+                            foto_button?.isEnabled = false
+                        } else {
+                            fabLand?.visibility = View.INVISIBLE
+                            foto_buttonLand?.visibility = View.INVISIBLE
+
+                            fabLand?.isEnabled = false
+                            foto_buttonLand?.isEnabled = false
+                        }
+
+                        tvTime?.visibility = View.VISIBLE
+                        tvTime?.text = "00"
+                    }
+
+                    override fun timerChange(time: Long) {
+                        val hour = time / 60 / 60 % 60
+                        val minute = time / 60 % 60
+                        val seconds = time % 60
+
+                        val timeStr = when {
+                            hour != 0L -> "${hour.getString()}:${minute.getString()}:${seconds.getString()}"
+                            minute != 0L -> "${minute.getString()}:${seconds.getString()}"
+                            else -> seconds.getString()
+                        }
+
+                        tvTime?.text = timeStr
+                    }
+
+                    fun Long.getString(): String {
+                        return if (this < 10) {
+                            "0${this}"
+                        } else {
+                            "${this}"
+                        }
+                    }
+
+                    override fun timerEnd() {
+                        if (fab.visibility == View.INVISIBLE) {
+                            fab?.visibility = View.VISIBLE
+                            foto_button?.visibility = View.VISIBLE
+                        } else {
+                            fabLand?.visibility = View.VISIBLE
+                            foto_buttonLand?.visibility = View.VISIBLE
+                        }
+
+                        fab?.isEnabled = true
+                        foto_button?.isEnabled = true
+
+                        fabLand?.isEnabled = true
+                        foto_buttonLand?.isEnabled = true
+
+                        tvTime?.visibility = View.INVISIBLE
+                    }
+
+                })
+
+                recordActivity?.onCreate(arrayListOf(videoButton, videoButtonLand))
             } else {
                 it.visibility = View.GONE
+                videoButtonLand.visibility = View.GONE
             }
         }
 
-        foto_button.setOnClickListener(View.OnClickListener {
+        val fotoClickListener = View.OnClickListener {
             try {
                 architectView.captureScreen(1) { bitmap ->
                     try {
@@ -50,11 +122,15 @@ class DonArGeoActivity : SimpleGeoArActivity() {
                 }
 
             } catch (e: Exception) {
-                foto_button.setVisibility(View.INVISIBLE)
+                foto_button.setVisibility(View.GONE)
+                foto_buttonLand.setVisibility(View.GONE)
                 Toast.makeText(this, e.message, Toast.LENGTH_LONG).show()
                 e.printStackTrace()
             }
-        })
+        }
+
+        foto_button?.setOnClickListener(fotoClickListener)
+        foto_buttonLand?.setOnClickListener(fotoClickListener)
 
         if (scaleGestureDetector == null) {
             scaleGestureDetector = ScaleGestureDetector(applicationContext, object : ScaleGestureDetector.SimpleOnScaleGestureListener() {
@@ -82,14 +158,17 @@ class DonArGeoActivity : SimpleGeoArActivity() {
 
         var flashIsChecked = true
 
-        flashSwitcher?.setOnClickListener {
+        val flashSwitcherClickListener = View.OnClickListener {
             architectView.callJavascript("AR.hardware.camera.flashlight = ${flashIsChecked};")
             flashIsChecked = !flashIsChecked
         }
 
+        flashSwitcher?.setOnClickListener(flashSwitcherClickListener)
+        flashSwitcherLand?.setOnClickListener(flashSwitcherClickListener)
+
         var switchCameraIsChecked = true
 
-        switchCameraFab?.setOnClickListener {
+        val switchCameraFabClickListener = View.OnClickListener {
             val js = if (switchCameraIsChecked) {
                 "AR.hardware.camera.position = AR.CONST.CAMERA_POSITION.FRONT"
             } else {
@@ -99,8 +178,10 @@ class DonArGeoActivity : SimpleGeoArActivity() {
             switchCameraIsChecked = !switchCameraIsChecked
         }
 
+        switchCameraFab?.setOnClickListener(switchCameraFabClickListener)
+        switchCameraFabLand?.setOnClickListener(switchCameraFabClickListener)
 
-        geoArSwitcher?.setOnClickListener {
+        val geoArSwitcherClickListener = View.OnClickListener {
             architectView.cullingDistance = 800f
             if (SimpleArActivity.currentWorld == ACTIVITY_ARCHITECT_WORLD_URL) {
                 SimpleArActivity.currentWorld = SimpleArActivity.ACTIVITY_ARCHITECT_WORLD_GEO_URL
@@ -108,16 +189,24 @@ class DonArGeoActivity : SimpleGeoArActivity() {
                 SimpleArActivity.currentWorld = SimpleArActivity.ACTIVITY_ARCHITECT_WORLD_URL
             }
             architectView.load(SimpleArActivity.currentWorld)
-            //loadPoiFromJson(currentLocation.latitude, currentLocation.longitude)
         }
 
-        informationFab?.setOnClickListener {
+        geoArSwitcher?.setOnClickListener(geoArSwitcherClickListener)
+        geoArSwitcherLand?.setOnClickListener(geoArSwitcherClickListener)
+
+        val informationFabClickListener = View.OnClickListener {
             startActivity(Intent(this@DonArGeoActivity, PreviewActivity::class.java))
         }
 
-        webInfoFab?.setOnClickListener {
+        informationFab?.setOnClickListener(informationFabClickListener)
+        informationFabLand?.setOnClickListener(informationFabClickListener)
+
+        val webInfoFabClickListener = View.OnClickListener {
             "http://www.zrenie20.info".openUrl()
         }
+
+        webInfoFab?.setOnClickListener(webInfoFabClickListener)
+        webInfoFabLand?.setOnClickListener(webInfoFabClickListener)
     }
 
     private fun String.openUrl() {
@@ -166,12 +255,6 @@ class DonArGeoActivity : SimpleGeoArActivity() {
         }
     }
 
-    /*private fun loadPoiFromJson(lat: Double, lon: Double) {
-        architectView.callJavascript(
-                """AR.context.onLocationChanged = World.locationChanged;""".trimIndent()
-        )
-    }*/
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             recordActivity?.onActivityResult(requestCode, resultCode, data)
@@ -183,13 +266,49 @@ class DonArGeoActivity : SimpleGeoArActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             recordActivity?.onRequestPermissionsResult(requestCode, permissions, grantResults)
         }
+
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
     override fun onDestroy() {
         super.onDestroy()
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             recordActivity?.onDestroy()
+        }
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            if (foto_button?.visibility == View.INVISIBLE) {
+                foto_buttonLand?.visibility = View.INVISIBLE
+                fabLand?.visibility = View.INVISIBLE
+            } else {
+                foto_buttonLand?.visibility = View.VISIBLE
+                fabLand?.visibility = View.VISIBLE
+            }
+
+            videoButtonLand?.visibility = View.VISIBLE
+
+            foto_button?.visibility = View.GONE
+            videoButton?.visibility = View.GONE
+            fab?.visibility = View.GONE
+        } else {
+            if (foto_buttonLand?.visibility == View.INVISIBLE) {
+                foto_button?.visibility = View.INVISIBLE
+                fab?.visibility = View.INVISIBLE
+            } else {
+                foto_button?.visibility = View.VISIBLE
+                fab?.visibility = View.VISIBLE
+            }
+
+            videoButton?.visibility = View.VISIBLE
+
+            foto_buttonLand?.visibility = View.GONE
+            videoButtonLand?.visibility = View.GONE
+            fabLand?.visibility = View.GONE
         }
     }
 }

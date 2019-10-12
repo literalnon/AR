@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="preview_screen_first_title">НАВЕДИ КАМЕРУ НА ОБ\'ЄКТ З ЛОГОТИПОМ ZRENIE 2.0 АБО НА РІДНУ ОБКЛАДИНКУ СВОГО ПАСПОРТИ</string>
+    <string name="preview_screen_second_title">ВИКОРИСТОВУЙ ЕКРАН ТЕЛЕФОНУ, ЩОБ КЕРУВАТИ ЗУМОМ АБО ЗРОБИТИ ФОТО / ВІДЕО</string>
+    <string name="preview_screen_third_title">АКТИВУЄ РЕЖИМ GEO-AR ЧЕРЕЗ МЕНЮ, ЩОБ ОТРИМАТИ ДОСТУП ДО GPS AR КОНТЕНТУ</string>
+    <string name="preview_screen_button">ВАШ НОВИЙ ПОГЛЯД НА СВІТ</string>
+    <string name="preview_screen_button_start">ПОЧАТИ</string>
+
+</resources>

@@ -1,68 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-	<com.wikitude.architect.ArchitectView
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:fab="http://schemas.android.com/tools"
+	android:id="@+id/mainLayout"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
 
-        android:id="@+id/architectView"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"/>
+	<FrameLayout
+		android:id="@+id/zoomView"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		app:layout_constraintBottom_toTopOf="@+id/foto_button"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
 
-	<ImageView
-		android:id="@+id/search_button"
-		android:layout_marginTop="20dp"
-		android:layout_marginLeft="30dp"
-		android:background="@drawable/ic_language_black_24dp"
-		android:layout_width="50dp"
-		android:layout_height="50dp" />
-
-	<ImageView
-        android:visibility="invisible"
-		android:id="@+id/flash_button"
-		android:layout_marginTop="20dp"
-		android:layout_marginRight="30dp"
-		android:layout_alignParentRight="true"
-		android:background="@drawable/ic_flash_on_black_24dp"
-		android:layout_width="30dp"
-		android:layout_height="40dp" />
-
-	<ImageView
+	<android.support.v7.widget.AppCompatImageView
 		android:id="@+id/foto_button"
-		android:layout_alignParentLeft="true"
-		android:layout_marginBottom="90dp"
-		android:layout_marginLeft="30dp"
-		android:layout_centerVertical="true"
-		android:background="@drawable/ic_add_a_photo_black_24dp"
-		android:layout_width="40dp"
-		android:layout_height="40dp" />
+		android:layout_width="64dp"
+		android:layout_height="64dp"
+		android:layout_alignParentBottom="true"
+		android:layout_centerHorizontal="true"
+		android:layout_marginStart="16dp"
+		android:layout_marginBottom="16dp"
+		android:background="@drawable/camera_150"
+		app:layout_constraintBottom_toTopOf="@+id/videoButton"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintVertical_chainStyle="packed" />
 
-	<ImageView
-		android:alpha="0.4"
+	<android.support.v7.widget.AppCompatImageView
+		android:id="@+id/videoButton"
+		android:layout_width="64dp"
+		android:layout_height="64dp"
+
+		android:layout_marginStart="16dp"
+		android:layout_marginTop="16dp"
+		android:layout_marginBottom="16dp"
+		app:layout_constraintBottom_toTopOf="@+id/fab"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/foto_button"
+		app:srcCompat="@drawable/video_150" />
+
+	<android.support.v7.widget.AppCompatImageView
 		android:id="@+id/rUp"
-		android:layout_alignParentRight="true"
 		android:layout_width="50dp"
 		android:layout_height="70dp"
-		android:background="@drawable/pravy_verkhniy"/>
-	<ImageView
+		android:layout_alignParentRight="true"
 		android:alpha="0.4"
+		android:background="@drawable/pravy_verkhniy"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<android.support.v7.widget.AppCompatImageView
 		android:id="@+id/lUp"
 		android:layout_width="50dp"
 		android:layout_height="70dp"
-		android:background="@drawable/levy_verkhniy"/>
-	<ImageView
-		android:id="@+id/lDown"
 		android:alpha="0.4"
-		android:layout_alignParentBottom="true"
+		android:background="@drawable/levy_verkhniy"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<android.support.v7.widget.AppCompatImageView
+		android:id="@+id/lDown"
 		android:layout_width="50dp"
 		android:layout_height="70dp"
-		android:background="@drawable/levy_nizhniy"/>
-	<ImageView
+		android:layout_alignParentBottom="true"
 		android:alpha="0.4"
+		android:background="@drawable/levy_nizhniy"
+		app:layout_constraintBottom_toBottomOf="@+id/architectView"
+		app:layout_constraintStart_toStartOf="parent" />
+
+	<android.support.v7.widget.AppCompatImageView
 		android:id="@+id/rDown"
+		android:layout_width="50dp"
+		android:layout_height="70dp"
 		android:layout_alignParentRight="true"
 		android:layout_alignParentBottom="true"
-		android:layout_width="50dp"
-		android:layout_height="70dp"
-		android:background="@drawable/pravy_nizhniy"/>
+		android:alpha="0.4"
+		android:background="@drawable/pravy_nizhniy"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent" />
 
-</RelativeLayout>
+
+	<android.support.v7.widget.AppCompatTextView
+		android:id="@+id/tvTime"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="32dp"
+		android:layout_marginBottom="32dp"
+		android:textColor="@android:color/white"
+		android:textSize="20sp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent" />
+
+	<com.getbase.floatingactionbutton.FloatingActionsMenu
+		android:id="@+id/fab"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="16dp"
+		android:clickable="true"
+		app:fab_addButtonColorNormal="@color/colorAccent"
+
+		app:fab_addButtonPlusIconColor="@android:color/black"
+		app:fab_expandDirection="right"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/videoButton"
+		app:srcCompat="@android:drawable/ic_menu_add">
+
+		<com.getbase.floatingactionbutton.FloatingActionButton
+			android:id="@+id/webInfoFab"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:fab_colorNormal="@android:color/white"
+			app:fab_colorPressed="@android:color/white"
+			app:fab_icon="@drawable/web_150" />
+
+		<com.getbase.floatingactionbutton.FloatingActionButton
+			android:id="@+id/informationFab"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:fab_colorNormal="@android:color/white"
+			app:fab_colorPressed="@android:color/white"
+			app:fab_icon="@drawable/info_150" />
+
+		<com.getbase.floatingactionbutton.FloatingActionButton
+			android:id="@+id/geoArSwitcher"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:fab_colorNormal="@android:color/white"
+			app:fab_colorPressed="@android:color/white"
+			app:fab_icon="@drawable/geo_ar_150" />
+
+		<com.getbase.floatingactionbutton.FloatingActionButton
+			android:id="@+id/flashSwitcher"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:background="@android:color/white"
+			app:fab_colorNormal="@android:color/white"
+			app:fab_colorPressed="@android:color/white"
+			app:fab_icon="@drawable/flash_150" />
+
+		<com.getbase.floatingactionbutton.FloatingActionButton
+			android:id="@+id/switchCameraFab"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:fab_colorNormal="@android:color/white"
+			app:fab_colorPressed="@android:color/white"
+			app:fab_icon="@drawable/cameraflip_150" />
+
+	</com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+	<com.wikitude.architect.ArchitectView
+		android:id="@+id/architectView"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		android:keepScreenOn="true"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.0"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintVertical_bias="1.0">
+
+	</com.wikitude.architect.ArchitectView>
+
+</android.support.constraint.ConstraintLayout>
