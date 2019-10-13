@@ -55,7 +55,6 @@ class MainActivity : AppCompatActivity() {
         val lUp = findViewById<View>(R.id.lUp) as ImageView
 
         val logo = findViewById<View>(R.id.logo) as ImageView
-        val pager = findViewById<View>(R.id.photos_viewpager) as ViewPager
         //        pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
         //
         //            @Override
@@ -92,18 +91,19 @@ class MainActivity : AppCompatActivity() {
         // tabLayout.setupWithViewPager(pager);
         animatorSet = AnimatorSet()
 
-        val rUpAnanim = ObjectAnimator.ofInt(rUp, "translationY", -150, 0)
-        val rDownAnanim = ObjectAnimator.ofInt(rDown, "translationY", +150, 0)
-        val lDownAnanim = ObjectAnimator.ofInt(lDown, "translationY", +150, 0)
-        val lUpAnanim = ObjectAnimator.ofInt(lUp, "translationY", -150, 0)
+        val rUpAnanim = ObjectAnimator.ofFloat(rUp, "translationY", -150f, 0f)
+        val rDownAnanim = ObjectAnimator.ofFloat(rDown, "translationY", +150f, 0f)
+        val lDownAnanim = ObjectAnimator.ofFloat(lDown, "translationY", +150f, 0f)
+        val lUpAnanim = ObjectAnimator.ofFloat(lUp, "translationY", -150f, 0f)
 
-        val logoAnim = ObjectAnimator.ofInt(logo, "translationY", +700, 0)
-        logoAnim.setDuration(2500)
+        val logoAnim = ObjectAnimator.ofFloat(logo, "translationY", +300f, 0f)//700
 
-        rUpAnanim.setDuration(2200)
-        rDownAnanim.setDuration(2300)
-        lDownAnanim.setDuration(2400)
-        lUpAnanim.setDuration(2500)
+        logoAnim.duration = 2500
+
+        rUpAnanim.duration = 2200
+        rDownAnanim.duration = 2300
+        lDownAnanim.duration = 2400
+        lUpAnanim.duration = 2500
 
 
         animatorSet!!.playTogether(
@@ -122,7 +122,6 @@ class MainActivity : AppCompatActivity() {
                 lUp.visibility = View.VISIBLE
 
                 logo.visibility = View.VISIBLE
-                pager.visibility = View.INVISIBLE
             }
 
 
@@ -137,9 +136,6 @@ class MainActivity : AppCompatActivity() {
                     lUp.visibility = View.INVISIBLE
 
                     logo.visibility = View.INVISIBLE
-                    pager.visibility = View.VISIBLE
-
-                    pager.adapter = pagerAdapter
                 }
             }
 

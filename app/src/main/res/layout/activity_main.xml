@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,58 +7,67 @@
     android:background="@android:color/white"
     tools:context="com.zrenie20don.MainActivity">
 
-    <ImageView
+    <android.support.v7.widget.AppCompatImageView
         android:visibility="invisible"
         android:id="@+id/rUp"
         android:alpha="0.4"
-        android:layout_alignParentRight="true"
+        android:layout_gravity="right|top"
         android:layout_width="50dp"
         android:layout_height="70dp"
         android:background="@drawable/pravy_verkhniy"/>
-    <ImageView
+
+    <android.support.v7.widget.AppCompatImageView
         android:visibility="invisible"
         android:alpha="0.4"
         android:id="@+id/lUp"
+        android:layout_gravity="left|top"
         android:layout_width="50dp"
         android:layout_height="70dp"
         android:background="@drawable/levy_verkhniy"/>
-    <ImageView
+
+    <android.support.v7.widget.AppCompatImageView
         android:id="@+id/lDown"
         android:visibility="invisible"
         android:alpha="0.4"
-        android:layout_alignParentBottom="true"
+        android:layout_gravity="left|bottom"
         android:layout_width="50dp"
         android:layout_height="70dp"
         android:background="@drawable/levy_nizhniy"/>
 
-    <ImageView
+    <android.support.v7.widget.AppCompatImageView
         android:visibility="invisible"
         android:id="@+id/rDown"
         android:alpha="0.4"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
+        android:layout_gravity="right|bottom"
         android:layout_width="50dp"
         android:layout_height="70dp"
         android:background="@drawable/pravy_nizhniy"/>
 
-    <ImageView
+    <android.support.v7.widget.AppCompatImageView
         android:id="@+id/logo"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/logotype"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:adjustViewBounds="true"
-        android:background="@drawable/zrenie_main_icon"
+        android:layout_gravity="center"
+        android:src="@drawable/loadinglogo"
+        android:scaleType="fitCenter"
         android:contentDescription="@string/logo"
-        android:scaleType="matrix"
-        android:visibility="invisible" />
+        android:visibility="visible" />
 
-    <android.support.v4.view.ViewPager
+    <!--<android.support.v7.widget.AppCompatImageView
+        android:id="@+id/logo2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/logotype"
+        android:layout_gravity="center"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/loadinglogo"
+        />-->
+
+    <!--<android.support.v4.view.ViewPager
         android:id="@+id/photos_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentTop="true" />-->
 
     <!--<android.support.design.widget.TabLayout-->
         <!--android:id="@+id/tab_layout"-->
@@ -68,4 +77,4 @@
         <!--app:tabGravity="center"-->
         <!--app:tabIndicatorHeight="0dp" />-->
 
-</RelativeLayout>
+</FrameLayout>
