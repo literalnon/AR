@@ -100,13 +100,23 @@ public class SimpleArActivity extends AppCompatActivity {
         // The camera2 api is disabled by default (old camera api is used).
         
         architectView = findViewById(R.id.architectView);//new ArchitectView(this);
-        architectView.onCreate(config); // create ArchitectView with configuration
+        try {
+            architectView.onCreate(config); // create ArchitectView with configuration
+        } catch (Exception e) {
+            Log.e("architectView", "architectView.onCreate(config)");
+            e.printStackTrace();
+        }
     }
 
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        architectView.onPostCreate();
+        try {
+            architectView.onPostCreate();
+        } catch (Exception e) {
+            Log.e("architectView", "architectView.onPostCreate()");
+            e.printStackTrace();
+        }
 
         try {
             /*
@@ -126,13 +136,23 @@ public class SimpleArActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        architectView.onResume(); // Mandatory ArchitectView lifecycle call
+        try {
+            architectView.onResume(); // Mandatory ArchitectView lifecycle call
+        } catch (Exception e) {
+            Log.e("architectView", "architectView.onResume()");
+            e.printStackTrace();
+        }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        architectView.onPause(); // Mandatory ArchitectView lifecycle call
+        try {
+            architectView.onPause(); // Mandatory ArchitectView lifecycle call
+        } catch (Exception e) {
+            Log.e("architectView", "architectView.onPause()");
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -145,7 +165,12 @@ public class SimpleArActivity extends AppCompatActivity {
          *
          * This should be called before architectView.onDestroy
          */
-        architectView.clearCache();
-        architectView.onDestroy(); // Mandatory ArchitectView lifecycle call
+        try {
+            architectView.clearCache();
+            architectView.onDestroy(); // Mandatory ArchitectView lifecycle call
+        } catch (Exception e) {
+            Log.e("architectView", "architectView.clearCache()");
+            e.printStackTrace();
+        }
     }
 }

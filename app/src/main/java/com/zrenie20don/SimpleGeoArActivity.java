@@ -5,6 +5,7 @@ import android.hardware.SensorManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.wikitude.architect.ArchitectView;
@@ -66,7 +67,12 @@ public class SimpleGeoArActivity extends SimpleArActivity implements LocationLis
          * The SensorAccuracyChangeListener has to be registered to the Architect view after ArchitectView.onCreate.
          * There may be more than one SensorAccuracyChangeListener.
          */
+        try {
         architectView.registerSensorAccuracyChangeListener(sensorAccuracyChangeListener);
+        } catch (Exception e) {
+            Log.e("architectView", "architectView.registerSensorAccuracyChangeListener()");
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -74,7 +80,12 @@ public class SimpleGeoArActivity extends SimpleArActivity implements LocationLis
         locationProvider.onPause();
         super.onPause();
         // The SensorAccuracyChangeListener has to be unregistered from the Architect view before ArchitectView.onDestroy.
+        try {
         architectView.unregisterSensorAccuracyChangeListener(sensorAccuracyChangeListener);
+        } catch (Exception e) {
+            Log.e("architectView", "architectView.unregisterSensorAccuracyChangeListener()");
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -89,10 +100,15 @@ public class SimpleGeoArActivity extends SimpleArActivity implements LocationLis
         currentLocation = location;
 
         float accuracy = location.hasAccuracy() ? location.getAccuracy() : 1000;
+        try {
         if (location.hasAltitude()) {
             architectView.setLocation(location.getLatitude(), location.getLongitude(), location.getAltitude(), accuracy);
         } else {
             architectView.setLocation(location.getLatitude(), location.getLongitude(), accuracy);
+        }
+        } catch (Exception e) {
+            Log.e("architectView", "architectView.onLocationChanged()");
+            e.printStackTrace();
         }
     }
 

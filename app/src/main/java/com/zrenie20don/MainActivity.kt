@@ -55,6 +55,7 @@ class MainActivity : AppCompatActivity() {
         val lUp = findViewById<View>(R.id.lUp) as ImageView
 
         val logo = findViewById<View>(R.id.logo) as ImageView
+        val pager = findViewById<View>(R.id.photos_viewpager) as ViewPager
         //        pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
         //
         //            @Override
@@ -122,6 +123,7 @@ class MainActivity : AppCompatActivity() {
                 lUp.visibility = View.VISIBLE
 
                 logo.visibility = View.VISIBLE
+                pager.visibility = View.INVISIBLE
             }
 
 
@@ -136,6 +138,9 @@ class MainActivity : AppCompatActivity() {
                     lUp.visibility = View.INVISIBLE
 
                     logo.visibility = View.INVISIBLE
+                    pager.visibility = View.VISIBLE
+
+                    pager.adapter = pagerAdapter
                 }
             }
 
