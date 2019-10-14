@@ -15,6 +15,8 @@ import com.wikitude.common.camera.CameraSettings;
 
 import java.io.IOException;
 
+import static com.zrenie20don.ZrenieApp.wikiType;
+
 /**
  * This Activity is (almost) the least amount of code required to use the
  * basic functionality for Image-/Instant- and Object Tracking.
@@ -32,6 +34,8 @@ public class SimpleArActivity extends AppCompatActivity {
     public static String currentWorld = ACTIVITY_ARCHITECT_WORLD_URL;
 
     private static final String TAG = SimpleArActivity.class.getSimpleName();
+
+    private static final String EXTRA_TYPE = "EXTRA_TYPE";
 
     /** Root directory of the sample AR-Experiences in the assets dir. */
     private static final String SAMPLES_ROOT = "samples/";
@@ -92,7 +96,7 @@ public class SimpleArActivity extends AppCompatActivity {
          */
         config = new ArchitectStartupConfiguration(); // Creates a config with its default values.
 
-        config.setLicenseKey(WikitudeSDKConstants.WIKITUDE_SDK_KEY );
+        config.setLicenseKey(WikitudeSDKConstants.INSTANCE.getWIKITUDE_SDK_KEY());
         config.setFeatures(ArchitectStartupConfiguration.Features.Geo);
         config.setCameraResolution(CameraSettings.CameraResolution.AUTO);
         config.setCameraFocusMode(CameraSettings.CameraFocusMode.CONTINUOUS);
@@ -126,8 +130,15 @@ public class SimpleArActivity extends AppCompatActivity {
              * To get notified once the AR-Experience is fully loaded,
              * an ArchitectWorldLoadedListener can be registered.
              */
+
+            if (wikiType == ARGEOCONST.EXTRA_AR_TYPE) {
+                currentWorld = ACTIVITY_ARCHITECT_WORLD_URL;
+            } else {
+                currentWorld = ACTIVITY_ARCHITECT_WORLD_GEO_URL;
+            }
+
             architectView.load(currentWorld);//SAMPLES_ROOT + arExperience);//
-        } catch (IOException e) {
+        } catch (Exception e) {
             //Toast.makeText(this, getString(R.string.error_loading_ar_experience), Toast.LENGTH_SHORT).show();
             Log.e(TAG, "Exception while loading arExperience " + arExperience + ".", e);
         }

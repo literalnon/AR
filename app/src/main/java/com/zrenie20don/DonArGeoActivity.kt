@@ -182,13 +182,20 @@ class DonArGeoActivity : SimpleGeoArActivity() {
         switchCameraFabLand?.setOnClickListener(switchCameraFabClickListener)
 
         val geoArSwitcherClickListener = View.OnClickListener {
-            architectView.cullingDistance = 800f
+            //architectView.cullingDistance = 800f
+
             if (SimpleArActivity.currentWorld == ACTIVITY_ARCHITECT_WORLD_URL) {
-                SimpleArActivity.currentWorld = SimpleArActivity.ACTIVITY_ARCHITECT_WORLD_GEO_URL
+                //SimpleArActivity.currentWorld = SimpleArActivity.ACTIVITY_ARCHITECT_WORLD_GEO_URL
+                ZrenieApp.wikiType = ARGEOCONST.EXTRA_GEO_TYPE
             } else {
-                SimpleArActivity.currentWorld = SimpleArActivity.ACTIVITY_ARCHITECT_WORLD_URL
+                ZrenieApp.wikiType = ARGEOCONST.EXTRA_AR_TYPE
+                //SimpleArActivity.currentWorld = SimpleArActivity.ACTIVITY_ARCHITECT_WORLD_URL
             }
-            architectView.load(SimpleArActivity.currentWorld)
+
+            startActivity(Intent(this, DonArGeoActivity::class.java))
+            finish()
+            //architectView.load(SimpleArActivity.currentWorld)
+
         }
 
         geoArSwitcher?.setOnClickListener(geoArSwitcherClickListener)
