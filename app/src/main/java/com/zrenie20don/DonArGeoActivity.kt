@@ -135,6 +135,7 @@ class DonArGeoActivity : SimpleGeoArActivity() {
         if (scaleGestureDetector == null) {
             scaleGestureDetector = ScaleGestureDetector(applicationContext, object : ScaleGestureDetector.SimpleOnScaleGestureListener() {
                 override fun onScaleBegin(detector: ScaleGestureDetector?): Boolean {
+                    Log.e("gesture", "detector : ${detector?.isInProgress}, ${detector?.scaleFactor}, ${detector?.timeDelta}, ${detector?.eventTime}, ${detector?.currentSpan}")
                     return true
                 }
 
@@ -142,6 +143,7 @@ class DonArGeoActivity : SimpleGeoArActivity() {
                 }
 
                 override fun onScale(detector: ScaleGestureDetector?): Boolean {
+                    Log.e("gesture", "onScale :  detector?.scaleFactor : ${detector?.scaleFactor}")
                     var scaleFactor = detector?.scaleFactor ?: 1f
                     scaleFactor -= 1
                     scaleFactor *= 100
@@ -152,7 +154,12 @@ class DonArGeoActivity : SimpleGeoArActivity() {
             })
 
             zoomView?.setOnTouchListener { v, event ->
-                return@setOnTouchListener scaleGestureDetector?.onTouchEvent(event) ?: false
+                //val archTouch = architectView.onTouchEvent(event)
+                //Log.e("gesture", "${archTouch}")
+                architectView?.dispatchTouchEvent(event)
+                val gesture = scaleGestureDetector?.onTouchEvent(event)
+                Log.e("gesture", "${gesture}")
+                return@setOnTouchListener gesture  ?: false
             }
         }
 

@@ -28,8 +28,8 @@ public class SimpleArActivity extends AppCompatActivity {
 
     public static final String INTENT_EXTRAS_KEY_SAMPLE = "sampleData";
 
-    public static final String ACTIVITY_ARCHITECT_WORLD_URL = "https://storage.cloud.croc.ru/zrenie.kudinov/experience/index.html";
-    public static final String ACTIVITY_ARCHITECT_WORLD_GEO_URL = "https://storage.cloud.croc.ru/zrenie.kudinov/geo/index.html";
+    public static final String ACTIVITY_ARCHITECT_WORLD_URL = "https://hb.bizmrg.com/image-target/experience/index.html";//"https://storage.cloud.croc.ru/zrenie.kudinov/experience/index.html";
+    public static final String ACTIVITY_ARCHITECT_WORLD_GEO_URL = "https://hb.bizmrg.com/geo-target/index.html";//"https://storage.cloud.croc.ru/zrenie.kudinov/geo/index.html";
 
     public static String currentWorld = ACTIVITY_ARCHITECT_WORLD_URL;
 
