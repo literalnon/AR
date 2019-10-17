@@ -1,7 +1,7 @@
 package com.zrenie20don;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class ArActivity extends AppCompatActivity {
 

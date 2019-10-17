@@ -1,7 +1,6 @@
 package com.zrenie20don;
 
-import android.app.Application;
-import android.support.multidex.MultiDexApplication;
+import androidx.multidex.MultiDexApplication;
 
 /**
  * Created by Кирилл on 22.11.2017.

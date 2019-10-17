@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "352252051823",
+    "firebase_url": "https://zrenie-4efb7.firebaseio.com",
+    "project_id": "zrenie-4efb7",
+    "storage_bucket": "zrenie-4efb7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:352252051823:android:e70f059a483f0c5964289a",
+        "android_client_info": {
+          "package_name": "com.zrenie20don"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "352252051823-ppiu5asjtl3uaattg948gm3rnbgto4am.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0-yZr3H3nFdhSYjGmCJ-oX-A94Xs5Btw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "352252051823-ppiu5asjtl3uaattg948gm3rnbgto4am.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

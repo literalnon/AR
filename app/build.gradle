@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
+apply plugin: 'com.google.gms.google-services'
+
 
 android {
     signingConfigs {
@@ -11,12 +13,12 @@ android {
             storePassword 'Shoaib.1992'
         }
     }
-    compileSdkVersion 28
+    compileSdkVersion 29
 
     defaultConfig {
         applicationId "com.zrenie20don"
         minSdkVersion 19
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 24
         versionName "10.3"
         signingConfig signingConfigs.config
@@ -37,6 +39,11 @@ android {
 
     productFlavors {
     }
+    compileOptions {
+        sourceCompatibility = "1.8"
+        targetCompatibility = "1.8"
+    }
+    buildToolsVersion = '29.0.2'
 }
 
 repositories {
@@ -51,16 +58,18 @@ dependencies {
     implementation files('libs/wikitudesdk.aar')
 
     implementation "com.github.nisrulz:screenshott:2.0.0"
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    implementation 'com.android.support:design:28.0.0'
-    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.getbase:floatingactionbutton:1.10.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     //implementation "org.bytedeco:javacv-platform:1.5.1"
-    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'androidx.multidex:multidex:2.0.0'
 
     //Date
-    implementation "com.jakewharton.threetenabp:threetenabp:$threetenVersion"
+    implementation "com.jakewharton.threetenabp:threetenabp:1.2.1"
 
+    implementation 'com.google.firebase:firebase-core:17.2.0'
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
 }

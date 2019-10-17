@@ -7,7 +7,7 @@
     android:background="@android:color/white"
     tools:context="com.zrenie20don.MainActivity">
 
-    <android.support.v7.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:visibility="invisible"
         android:id="@+id/rUp"
         android:alpha="0.4"
@@ -16,7 +16,7 @@
         android:layout_height="70dp"
         android:background="@drawable/pravy_verkhniy"/>
 
-    <android.support.v7.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:visibility="invisible"
         android:alpha="0.4"
         android:id="@+id/lUp"
@@ -25,7 +25,7 @@
         android:layout_height="70dp"
         android:background="@drawable/levy_verkhniy"/>
 
-    <android.support.v7.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/lDown"
         android:visibility="invisible"
         android:alpha="0.4"
@@ -34,7 +34,7 @@
         android:layout_height="70dp"
         android:background="@drawable/levy_nizhniy"/>
 
-    <android.support.v7.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:visibility="invisible"
         android:id="@+id/rDown"
         android:alpha="0.4"
@@ -43,7 +43,7 @@
         android:layout_height="70dp"
         android:background="@drawable/pravy_nizhniy"/>
 
-    <android.support.v7.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/logo"
         android:layout_width="match_parent"
         android:layout_height="@dimen/logotype"
@@ -62,7 +62,7 @@
         app:srcCompat="@drawable/loadinglogo"
         />-->
 
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/photos_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

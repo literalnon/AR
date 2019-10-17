@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.zrenie20don">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -8,6 +9,8 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.br" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -20,10 +23,14 @@
         android:icon="@mipmap/zrenie"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        tools:node="replace"
+
+        android:screenOrientation="portrait"
         android:theme="@style/AppTheme">
 
         <activity android:name=".PreviewActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            />
 
         <activity
             android:name=".MainActivity"
@@ -44,6 +51,7 @@
         <activity android:name=".SimpleArActivity" />
         <activity android:name=".DonArGeoActivity"
             android:configChanges="screenSize|orientation"
+            android:screenOrientation="portrait"
             />
 
         <meta-data

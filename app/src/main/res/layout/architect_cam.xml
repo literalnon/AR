@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:fab="http://schemas.android.com/tools"
 	android:id="@+id/mainLayout"
@@ -20,12 +20,13 @@
 		android:id="@+id/zoomView"
 		android:layout_width="0dp"
 		android:layout_height="0dp"
+		android:background="@android:color/transparent"
 		app:layout_constraintBottom_toTopOf="@+id/foto_button"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent" />
 
-	<android.support.v7.widget.AppCompatImageView
+	<androidx.appcompat.widget.AppCompatImageView
 		android:id="@+id/foto_button"
 		android:layout_width="64dp"
 		android:layout_height="64dp"
@@ -41,7 +42,7 @@
 		app:layout_constraintHorizontal_bias="0.5"
 		app:layout_constraintStart_toEndOf="@+id/videoButton" />
 
-	<android.support.v7.widget.AppCompatImageView
+	<androidx.appcompat.widget.AppCompatImageView
 		android:id="@+id/videoButton"
 		android:layout_width="64dp"
 		android:layout_height="64dp"
@@ -55,7 +56,7 @@
 		app:layout_constraintTop_toTopOf="@+id/foto_button"
 		app:srcCompat="@drawable/video_150" />
 
-	<android.support.v7.widget.AppCompatImageView
+	<androidx.appcompat.widget.AppCompatImageView
 		android:id="@+id/foto_buttonLand"
 		android:layout_width="64dp"
 		android:layout_height="64dp"
@@ -71,7 +72,7 @@
 		app:layout_constraintTop_toBottomOf="@+id/videoButtonLand"
 		app:layout_constraintVertical_chainStyle="packed" />
 
-	<android.support.v7.widget.AppCompatImageView
+	<androidx.appcompat.widget.AppCompatImageView
 		android:id="@+id/videoButtonLand"
 		android:layout_width="64dp"
 		android:layout_height="64dp"
@@ -84,7 +85,7 @@
 		app:layout_constraintVertical_chainStyle="packed"
 		app:srcCompat="@drawable/video_150" />
 
-	<android.support.v7.widget.AppCompatImageView
+	<androidx.appcompat.widget.AppCompatImageView
 		android:id="@+id/rUp"
 		android:layout_width="50dp"
 		android:layout_height="70dp"
@@ -95,7 +96,7 @@
 		app:layout_constraintTop_toTopOf="parent" />
 
 
-	<android.support.v7.widget.AppCompatImageView
+	<androidx.appcompat.widget.AppCompatImageView
 		android:id="@+id/lUp"
 		android:layout_width="50dp"
 		android:layout_height="70dp"
@@ -104,7 +105,7 @@
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent" />
 
-	<android.support.v7.widget.AppCompatImageView
+	<androidx.appcompat.widget.AppCompatImageView
 		android:id="@+id/lDown"
 		android:layout_width="50dp"
 		android:layout_height="70dp"
@@ -114,7 +115,7 @@
 		app:layout_constraintBottom_toBottomOf="@+id/architectView"
 		app:layout_constraintStart_toStartOf="parent" />
 
-	<android.support.v7.widget.AppCompatImageView
+	<androidx.appcompat.widget.AppCompatImageView
 		android:id="@+id/rDown"
 		android:layout_width="50dp"
 		android:layout_height="70dp"
@@ -125,7 +126,7 @@
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent" />
 
-	<android.support.v7.widget.AppCompatTextView
+	<androidx.appcompat.widget.AppCompatTextView
 		android:id="@+id/tvTime"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
@@ -254,4 +255,4 @@
 
 	</com.getbase.floatingactionbutton.FloatingActionsMenu>
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
