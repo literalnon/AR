@@ -3,8 +3,13 @@
 
     <string name="preview_screen_first_title">POIGNEZ LA CAMÉRA SUR L’OBJET AVEC LE LOGO ZRENIE 2.0 OU VÉRIFIEZ LA COUVERTURE NATIVE DE VOTRE PASSEPORT</string>
     <string name="preview_screen_second_title">UTILISER L’ÉCRAN DU TÉLÉPHONE POUR COMMANDER LE ZOOM OU LA PHOTO / VIDÉO DE LA CAMÉRA</string>
-    <string name="preview_screen_third_title">ACTIVER LE MODE GEO-AR À TRAVERS LE MENU POUR OBTENIR UN ACCÈS AU CONTENU GPS AR</string>
+    <string name="preview_screen_third_title">POUR VOIR PLUS, BASCULER ENTRE LES MODES AR DANS LE MENU DÉROULANT-OUT</string>
     <string name="preview_screen_button">VOTRE NOUVEAU LOOK AU MONDE</string>
     <string name="preview_screen_button_start">COMMENCER</string>
+
+    <string name="dialog_title">Changer de mode AR</string>
+    <string name="image">Reconnaissance d\'image  </string>
+    <string name="object">Reconnaissance d\'objets 3D  </string>
+    <string name="geo">Géolocalisation (mode test)</string>
 
 </resources>

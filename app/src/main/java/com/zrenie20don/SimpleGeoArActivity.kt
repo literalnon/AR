@@ -10,7 +10,6 @@ import android.widget.Toast
 
 import com.wikitude.architect.ArchitectView
 import com.zrenie20don.util.location.LocationProvider
-import kotlinx.android.synthetic.main.activity_ar.*
 
 /**
  * This Activity is (almost) the least amount of code required to use the
@@ -62,10 +61,11 @@ open class SimpleGeoArActivity : SimpleArActivity(), LocationListener {
          * There may be more than one SensorAccuracyChangeListener.
          */
         try {
-            architectView.registerSensorAccuracyChangeListener(sensorAccuracyChangeListener)
+            architectView?.registerSensorAccuracyChangeListener(sensorAccuracyChangeListener)
         } catch (e: Exception) {
             Log.e("architectView", "architectView.registerSensorAccuracyChangeListener()")
             e.printStackTrace()
+            Toast.makeText(this, "architectView.registerSensorAccuracyChangeListener ${e.message}", Toast.LENGTH_LONG).show()
         }
 
     }
@@ -75,10 +75,11 @@ open class SimpleGeoArActivity : SimpleArActivity(), LocationListener {
         super.onPause()
         // The SensorAccuracyChangeListener has to be unregistered from the Architect view before ArchitectView.onDestroy.
         try {
-            architectView.unregisterSensorAccuracyChangeListener(sensorAccuracyChangeListener)
+            architectView?.unregisterSensorAccuracyChangeListener(sensorAccuracyChangeListener)
         } catch (e: Exception) {
             Log.e("architectView", "architectView.unregisterSensorAccuracyChangeListener()")
             e.printStackTrace()
+            Toast.makeText(this, "architectView.unregisterSensorAccuracyChangeListener ${e.message}", Toast.LENGTH_LONG).show()
         }
 
     }
@@ -96,13 +97,14 @@ open class SimpleGeoArActivity : SimpleArActivity(), LocationListener {
         val accuracy = if (location.hasAccuracy()) location.accuracy else 1000f
         try {
             if (location.hasAltitude()) {
-                architectView.setLocation(location.latitude, location.longitude, location.altitude, accuracy)
+                architectView?.setLocation(location.latitude, location.longitude, location.altitude, accuracy)
             } else {
-                architectView.setLocation(location.latitude, location.longitude, accuracy.toDouble())
+                architectView?.setLocation(location.latitude, location.longitude, accuracy.toDouble())
             }
         } catch (e: Exception) {
             Log.e("architectView", "architectView.onLocationChanged()")
             e.printStackTrace()
+            Toast.makeText(this, "architectView.onLocationChanged ${e.message}", Toast.LENGTH_LONG).show()
         }
 
     }

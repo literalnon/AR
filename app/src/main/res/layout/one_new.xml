@@ -32,7 +32,7 @@
                     android:gravity="left|center"
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/roboto"
-                    android:text="@string/n_zrenie_2_0_ru"
+
                     android:textColor="#5F6867"
                     android:textSize="14dp" />
 
@@ -57,7 +57,7 @@
                     android:layout_height="match_parent"
                     android:gravity="left|center"
                     android:fontFamily="@font/roboto"
-                    android:text="@string/n_zrenie_2_0_uk"
+
                     android:textColor="#5F6867"
                     android:textSize="14dp" />
 
@@ -82,7 +82,7 @@
                     android:layout_height="match_parent"
                     android:gravity="left|center"
                     android:fontFamily="@font/roboto"
-                    android:text="@string/n_zrenie_2_0_sp"
+
                     android:textColor="#5F6867"
                     android:textSize="14dp" />
 
@@ -107,7 +107,7 @@
                     android:layout_height="match_parent"
                     android:gravity="left|center"
                     android:fontFamily="@font/roboto"
-                    android:text="@string/n_zrenie_2_0_ital"
+
                     android:textColor="#5F6867"
                     android:textSize="14dp" />
 
@@ -132,7 +132,7 @@
                     android:layout_height="match_parent"
                     android:gravity="left|center"
                     android:fontFamily="@font/roboto"
-                    android:text="@string/n_zrenie_2_0_fra"
+
                     android:textColor="#5F6867"
                     android:textSize="14dp" />
 
@@ -157,7 +157,6 @@
                     android:layout_height="match_parent"
                     android:gravity="left|center"
                     android:fontFamily="@font/roboto"
-                    android:text="@string/n_zrenie_2_0_ger"
                     android:textColor="#5F6867"
                     android:textSize="14dp" />
             </LinearLayout>
@@ -181,7 +180,7 @@
                     android:layout_height="match_parent"
                     android:gravity="left|center"
                     android:fontFamily="@font/roboto"
-                    android:text="@string/n_zrenie_2_0_britan"
+
                     android:textColor="#5F6867"
                     android:textSize="14dp" />
 
@@ -207,7 +206,7 @@
                     android:gravity="left|center"
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/roboto"
-                    android:text="@string/n_zrenie_2_0_china"
+
                     android:textColor="#5F6867"
                     android:textSize="14dp" />
 

@@ -15,7 +15,6 @@
         android:layout_marginRight="16dp"
         android:layout_marginLeft="16dp"
         android:textSize="20dp"
-        android:text="@string/clicked"
         android:textAlignment="center"
        />
 
@@ -76,7 +75,6 @@
         android:layout_marginRight="16dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/roboto"
-        android:text="@string/click_on_pop"
         android:textAlignment="center"
         android:textColor="#5F6867"
         android:textSize="20dp" />

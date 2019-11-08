@@ -2,6 +2,7 @@ package com.zrenie20don
 
 import android.app.PendingIntent.getActivity
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.IntentSender
 import android.content.res.Configuration
@@ -27,6 +28,8 @@ import java.util.*
 import android.view.ScaleGestureDetector
 import android.view.MotionEvent
 import android.view.OrientationEventListener
+import androidx.appcompat.app.AlertDialog
+import com.crashlytics.android.Crashlytics
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.common.api.ResultCallback
@@ -37,6 +40,7 @@ import org.threeten.bp.ZoneId
 import org.threeten.bp.ZoneOffset
 import org.threeten.bp.ZonedDateTime
 import org.threeten.bp.format.DateTimeFormatter
+import java.lang.RuntimeException
 
 class DonArGeoActivity : SimpleGeoArActivity() {
 
@@ -61,7 +65,7 @@ class DonArGeoActivity : SimpleGeoArActivity() {
             override fun onOrientationChanged(orientation: Int) {
                 Log.e("listener", "onOrientationChanged : ${orientation}")
 
-                val newOrientation = when(orientation) {
+                val newOrientation = when (orientation) {
                     in 0..45 -> {
                         360
                     }
@@ -101,19 +105,11 @@ class DonArGeoActivity : SimpleGeoArActivity() {
                 recordActivity = ScreenRecordActivity(this, object : ITimeChangedListener {
                     override fun timerStart() {
 
-                        if (fab.visibility == View.VISIBLE) {
-                            fab?.visibility = View.INVISIBLE
-                            foto_button?.visibility = View.INVISIBLE
+                        fab?.visibility = View.INVISIBLE
+                        foto_button?.visibility = View.INVISIBLE
 
-                            fab?.isEnabled = false
-                            foto_button?.isEnabled = false
-                        } else {
-                            fabLand?.visibility = View.INVISIBLE
-                            foto_buttonLand?.visibility = View.INVISIBLE
-
-                            fabLand?.isEnabled = false
-                            foto_buttonLand?.isEnabled = false
-                        }
+                        fab?.isEnabled = false
+                        foto_button?.isEnabled = false
 
                         tvTime?.visibility = View.VISIBLE
                         tvTime?.text = "00"
@@ -142,35 +138,26 @@ class DonArGeoActivity : SimpleGeoArActivity() {
                     }
 
                     override fun timerEnd() {
-                        if (fab.visibility == View.INVISIBLE) {
                             fab?.visibility = View.VISIBLE
                             foto_button?.visibility = View.VISIBLE
-                        } else {
-                            fabLand?.visibility = View.VISIBLE
-                            foto_buttonLand?.visibility = View.VISIBLE
-                        }
 
                         fab?.isEnabled = true
                         foto_button?.isEnabled = true
-
-                        fabLand?.isEnabled = true
-                        foto_buttonLand?.isEnabled = true
 
                         tvTime?.visibility = View.INVISIBLE
                     }
 
                 })
 
-                recordActivity?.onCreate(arrayListOf(videoButton, videoButtonLand))
+                recordActivity?.onCreate(arrayListOf(videoButton))
             } else {
                 it.visibility = View.GONE
-                videoButtonLand.visibility = View.GONE
             }
         }
 
         val fotoClickListener = View.OnClickListener {
             try {
-                architectView.captureScreen(1) { bitmap ->
+                architectView?.captureScreen(1) { bitmap ->
                     try {
                         saveImage(bitmap)
                     } catch (e: Exception) {
@@ -179,15 +166,13 @@ class DonArGeoActivity : SimpleGeoArActivity() {
                 }
 
             } catch (e: Exception) {
-                foto_button.setVisibility(View.GONE)
-                foto_buttonLand.setVisibility(View.GONE)
+                foto_button.visibility = View.GONE
                 Toast.makeText(this, e.message, Toast.LENGTH_LONG).show()
                 e.printStackTrace()
             }
         }
 
         foto_button?.setOnClickListener(fotoClickListener)
-        foto_buttonLand?.setOnClickListener(fotoClickListener)
 
         if (scaleGestureDetector == null) {
             scaleGestureDetector = ScaleGestureDetector(applicationContext, object : ScaleGestureDetector.SimpleOnScaleGestureListener() {
@@ -205,7 +190,12 @@ class DonArGeoActivity : SimpleGeoArActivity() {
                     scaleFactor -= 1
                     scaleFactor *= 100
 
-                    architectView.callJavascript("AR.hardware.camera.zoom = AR.hardware.camera.zoom + ${scaleFactor} * (AR.hardware.camera.features.zoomRange.max - AR.hardware.camera.zoom + 1) / 100;")
+                    try {
+                        architectView?.callJavascript("AR.hardware.camera.zoom = AR.hardware.camera.zoom + ${scaleFactor} * (AR.hardware.camera.features.zoomRange.max - AR.hardware.camera.zoom + 1) / 100;")
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                        Toast.makeText(applicationContext, "architectView.callJavascript ${e.message}", Toast.LENGTH_LONG).show()
+                    }
                     return true
                 }
             })
@@ -213,7 +203,12 @@ class DonArGeoActivity : SimpleGeoArActivity() {
             zoomView?.setOnTouchListener { v, event ->
                 //val archTouch = architectView.onTouchEvent(event)
                 //Log.e("gesture", "${archTouch}")
-                architectView?.dispatchTouchEvent(event)
+                try {
+                    architectView?.dispatchTouchEvent(event)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    Toast.makeText(applicationContext, "architectView.dispatchTouchEvent ${e.message}", Toast.LENGTH_LONG).show()
+                }
                 val gesture = scaleGestureDetector?.onTouchEvent(event)
                 Log.e("gesture", "${gesture}")
                 return@setOnTouchListener gesture ?: false
@@ -223,12 +218,11 @@ class DonArGeoActivity : SimpleGeoArActivity() {
         var flashIsChecked = true
 
         val flashSwitcherClickListener = View.OnClickListener {
-            architectView.callJavascript("AR.hardware.camera.flashlight = ${flashIsChecked};")
+            architectView?.callJavascript("AR.hardware.camera.flashlight = ${flashIsChecked};")
             flashIsChecked = !flashIsChecked
         }
 
         flashSwitcher?.setOnClickListener(flashSwitcherClickListener)
-        flashSwitcherLand?.setOnClickListener(flashSwitcherClickListener)
 
         var switchCameraIsChecked = true
 
@@ -238,17 +232,16 @@ class DonArGeoActivity : SimpleGeoArActivity() {
             } else {
                 "AR.hardware.camera.position = AR.CONST.CAMERA_POSITION.BACK"
             }
-            architectView.callJavascript(js)
+            architectView?.callJavascript(js)
             switchCameraIsChecked = !switchCameraIsChecked
         }
 
         switchCameraFab?.setOnClickListener(switchCameraFabClickListener)
-        switchCameraFabLand?.setOnClickListener(switchCameraFabClickListener)
 
         val geoArSwitcherClickListener = View.OnClickListener {
             //architectView.cullingDistance = 800f
 
-            if (SimpleArActivity.currentWorld == ACTIVITY_ARCHITECT_WORLD_URL) {
+            /*if (SimpleArActivity.currentWorld == ACTIVITY_ARCHITECT_WORLD_URL) {
                 //SimpleArActivity.currentWorld = SimpleArActivity.ACTIVITY_ARCHITECT_WORLD_GEO_URL
                 ZrenieApp.wikiType = ARGEOCONST.EXTRA_GEO_TYPE
                 createLocationRequest()
@@ -258,27 +251,49 @@ class DonArGeoActivity : SimpleGeoArActivity() {
                 startActivity(Intent(this, DonArGeoActivity::class.java))
                 finish()
                 //SimpleArActivity.currentWorld = SimpleArActivity.ACTIVITY_ARCHITECT_WORLD_URL
-            }
+            }*/
+
             //architectView.load(SimpleArActivity.currentWorld)
+
+            AlertDialog.Builder(this)
+                    .setTitle(R.string.dialog_title)
+                    .setItems(R.array.choice_dialog) { p0, p1 ->
+                        when(p1) {
+                            0 -> {
+                                ZrenieApp.wikiType = ARGEOCONST.EXTRA_AR_TYPE
+                                startActivity(Intent(this, DonArGeoActivity::class.java))
+                                finish()
+                            }
+                            1 -> {
+                                ZrenieApp.wikiType = ARGEOCONST.EXTRA_3D
+                                startActivity(Intent(this, DonArGeoActivity::class.java))
+                                finish()
+                            }
+                            2 -> {
+                                ZrenieApp.wikiType = ARGEOCONST.EXTRA_GEO_TYPE
+                                createLocationRequest()
+                            }
+                        }
+                    }
+                    .create()
+                    .show()
+
 
         }
 
         geoArSwitcher?.setOnClickListener(geoArSwitcherClickListener)
-        geoArSwitcherLand?.setOnClickListener(geoArSwitcherClickListener)
 
         val informationFabClickListener = View.OnClickListener {
             startActivity(Intent(this@DonArGeoActivity, PreviewActivity::class.java))
         }
 
         informationFab?.setOnClickListener(informationFabClickListener)
-        informationFabLand?.setOnClickListener(informationFabClickListener)
 
         val webInfoFabClickListener = View.OnClickListener {
             "http://www.zrenie20.info".openUrl()
         }
 
         webInfoFab?.setOnClickListener(webInfoFabClickListener)
-        webInfoFabLand?.setOnClickListener(webInfoFabClickListener)
 
         val sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
         sensorManager.registerListener(listener, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL)
@@ -374,42 +389,6 @@ class DonArGeoActivity : SimpleGeoArActivity() {
         }
     }
 
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-
-        Log.e("onConfigurationChanged", "newConfig.orientation : ${newConfig.orientation}, ${Configuration.ORIENTATION_LANDSCAPE}")
-
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            if (foto_button?.visibility == View.INVISIBLE) {
-                foto_buttonLand?.visibility = View.INVISIBLE
-                fabLand?.visibility = View.INVISIBLE
-            } else {
-                foto_buttonLand?.visibility = View.VISIBLE
-                fabLand?.visibility = View.VISIBLE
-            }
-
-            videoButtonLand?.visibility = View.VISIBLE
-
-            foto_button?.visibility = View.GONE
-            videoButton?.visibility = View.GONE
-            fab?.visibility = View.GONE
-        } else {
-            if (foto_buttonLand?.visibility == View.INVISIBLE) {
-                foto_button?.visibility = View.INVISIBLE
-                fab?.visibility = View.INVISIBLE
-            } else {
-                foto_button?.visibility = View.VISIBLE
-                fab?.visibility = View.VISIBLE
-            }
-
-            videoButton?.visibility = View.VISIBLE
-
-            foto_buttonLand?.visibility = View.GONE
-            videoButtonLand?.visibility = View.GONE
-            fabLand?.visibility = View.GONE
-        }
-    }
-
     private fun createLocationRequest() {
         /*googleApiClient = GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(object : GoogleApiClient.ConnectionCallbacks {
@@ -464,7 +443,7 @@ class DonArGeoActivity : SimpleGeoArActivity() {
                 }*/
         val manager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
-        if (!manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ) {
+        if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
             startActivity(intent)
         } else {

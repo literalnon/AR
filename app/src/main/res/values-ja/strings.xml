@@ -3,8 +3,13 @@
 
     <string name="preview_screen_first_title">ロゴZRENIE 2.0でオブジェクトにカメラを向けるか、パスポートのネイティブカバーを確認してください</string>
     <string name="preview_screen_second_title">電話画面を使用してカメラのズームを制御したり、写真やビデオを作成したりします</string>
-    <string name="preview_screen_third_title">メニューからGEO-ARモードを有効にして、GPS ARコンテンツにアクセスします</string>
+    <string name="preview_screen_third_title">詳細を見るには、ドロップアウトメニューでARモードを切り替える</string>
     <string name="preview_screen_button">世界のあなたの新しい外観</string>
     <string name="preview_screen_button_start">開始</string>
+
+    <string name="dialog_title">ARモードの切り替え</string>
+    <string name="image">画像認識</string>
+    <string name="object">3Dオブジェクト認識</string>
+    <string name="geo">ジオロケーション（テストモード）</string>
 
 </resources>

@@ -4,7 +4,12 @@
     <string name="preview_screen_first_title">将相机对准带有ZRENIE 2.0徽标的物体，或者将其对准护照的本机盖</string>
     <string name="preview_screen_second_title">使用电话屏幕控制相机变焦或制作照片/视频</string>
     <string name="preview_screen_third_title">通过菜单激活GEO-AR模式以获取GPS AR内容</string>
-    <string name="preview_screen_button">您在世界上的新面貌</string>
+    <string name="preview_screen_button">你对世界的新面貌</string>
     <string name="preview_screen_button_start">开始</string>
+
+    <string name="dialog_title">切转换至AR mode</string>
+    <string name="image">影像辨识</string>
+    <string name="object">3D物体识别</string>
+    <string name="geo">地理位置（测试模式</string>
 
 </resources>

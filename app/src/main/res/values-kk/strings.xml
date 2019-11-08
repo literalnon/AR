@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="dialog_title">AR режиміне ауыстыру керек</string>
+    <string name="image">Суретті анықтау</string>
+    <string name="object">3D нысанын анықтау  </string>
+    <string name="geo">Геолокация (тесттік режим)</string>
+    <string name="preview_screen_button">СІЗДІҢ ӨМІРГЕ ДЕГЕН ЖАҢА КӨЗҚАРАСЫҢЫЗ</string>
+    <string name="preview_screen_button_start">БАСТАУ</string>
+    <string name="preview_screen_third_title">КӨБІРЕК КӨРУ ҮШІН ТҮСІРІЛЕТІН МӘЗІРДЕГІ АR РЕЖИМДЕРІ АРАЛЫҒЫНДА АУЫСЫТЫРЫП ОТЫРЫҢЫЗ</string>
+    <string name="preview_screen_second_title">ҮЛКЕЙТУ-КІШІРЕЙТУ, НЕМЕСЕ ФОТО / ВИДЕО ЖАСАУ ҮШІН ТЕЛЕФОННЫҢ ЭКРАНЫН ҚОЛДАНЫҢЫЗ</string>
+    <string name="preview_screen_first_title">КАМЕРАНЫ ZRENIE 2.0 ЛОГОТИПІ БАР СУРЕТКЕ НЕМЕСЕ ПАСПОРТЫҢЫЗДЫҢ ӨЗІНДІК МҰҚАБАСЫНА ҚАРАТЫҢЫЗ</string>
+</resources>

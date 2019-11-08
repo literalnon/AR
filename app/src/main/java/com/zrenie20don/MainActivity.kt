@@ -17,6 +17,8 @@ import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
+import com.wikitude.architect.ArchitectView
 
 class MainActivity : AppCompatActivity() {
     private var mSettings: SharedPreferences? = null
@@ -45,6 +47,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        if (!ArchitectView.isDeviceSupported(this)) {
+            Toast.makeText(this, "Device is not supported", Toast.LENGTH_LONG).show()
+        }
         mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE)
         // Запоминаем данные
         editor = mSettings!!.edit()

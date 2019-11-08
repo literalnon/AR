@@ -6,8 +6,18 @@
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent">
 
-	<com.wikitude.architect.ArchitectView
+	<!--<com.wikitude.architect.ArchitectView
 		android:id="@+id/architectView"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		android:keepScreenOn="true"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />-->
+
+	<FrameLayout
+		android:id="@+id/architectViewLayout"
 		android:layout_width="0dp"
 		android:layout_height="0dp"
 		android:keepScreenOn="true"
@@ -36,7 +46,7 @@
 		android:layout_marginEnd="16dp"
 		android:layout_marginBottom="32dp"
 		android:background="@drawable/camera_150"
-		app:layout_constraintBottom_toBottomOf="@+id/architectView"
+		app:layout_constraintBottom_toBottomOf="@+id/architectViewLayout"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintEnd_toStartOf="@+id/fab"
 		app:layout_constraintHorizontal_bias="0.5"
@@ -51,38 +61,9 @@
 		app:layout_constraintEnd_toStartOf="@+id/foto_button"
 		app:layout_constraintHorizontal_bias="0.5"
 		app:layout_constraintHorizontal_chainStyle="packed"
-		app:layout_constraintStart_toEndOf="@+id/architectView"
+		app:layout_constraintStart_toEndOf="@+id/architectViewLayout"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="@+id/foto_button"
-		app:srcCompat="@drawable/video_150" />
-
-	<androidx.appcompat.widget.AppCompatImageView
-		android:id="@+id/foto_buttonLand"
-		android:layout_width="64dp"
-		android:layout_height="64dp"
-		android:layout_alignParentBottom="true"
-		android:layout_centerHorizontal="true"
-		android:layout_marginStart="32dp"
-		android:layout_marginTop="16dp"
-		android:layout_marginBottom="16dp"
-		android:background="@drawable/camera_150"
-		android:visibility="gone"
-		app:layout_constraintBottom_toTopOf="@+id/fabLand"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/videoButtonLand"
-		app:layout_constraintVertical_chainStyle="packed" />
-
-	<androidx.appcompat.widget.AppCompatImageView
-		android:id="@+id/videoButtonLand"
-		android:layout_width="64dp"
-		android:layout_height="64dp"
-		android:layout_marginStart="32dp"
-		android:layout_marginBottom="16dp"
-		android:visibility="gone"
-		app:layout_constraintBottom_toTopOf="@+id/foto_buttonLand"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent"
-		app:layout_constraintVertical_chainStyle="packed"
 		app:srcCompat="@drawable/video_150" />
 
 	<androidx.appcompat.widget.AppCompatImageView
@@ -112,7 +93,7 @@
 		android:layout_alignParentBottom="true"
 		android:alpha="0.4"
 		android:background="@drawable/levy_nizhniy"
-		app:layout_constraintBottom_toBottomOf="@+id/architectView"
+		app:layout_constraintBottom_toBottomOf="@+id/architectViewLayout"
 		app:layout_constraintStart_toStartOf="parent" />
 
 	<androidx.appcompat.widget.AppCompatImageView
@@ -151,7 +132,7 @@
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintHorizontal_bias="0.5"
 		app:layout_constraintStart_toEndOf="@+id/foto_button"
-		app:srcCompat="@android:drawable/ic_menu_add">
+		>
 
 		<com.getbase.floatingactionbutton.FloatingActionButton
 			android:id="@+id/webInfoFab"
@@ -183,70 +164,11 @@
 			android:layout_height="wrap_content"
 			android:background="@android:color/white"
 			app:fab_colorNormal="@android:color/white"
-			app:fab_colorPressed="@android:color/white"
+			app:fab_colorPressed="@color/colorAccent"
 			app:fab_icon="@drawable/flash_150" />
 
 		<com.getbase.floatingactionbutton.FloatingActionButton
 			android:id="@+id/switchCameraFab"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			app:fab_colorNormal="@android:color/white"
-			app:fab_colorPressed="@android:color/white"
-			app:fab_icon="@drawable/cameraflip_150" />
-
-	</com.getbase.floatingactionbutton.FloatingActionsMenu>
-
-	<com.getbase.floatingactionbutton.FloatingActionsMenu
-		android:id="@+id/fabLand"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="24dp"
-		android:layout_marginTop="16dp"
-		android:clickable="true"
-		android:visibility="gone"
-		app:fab_addButtonColorNormal="@color/colorAccent"
-		app:fab_addButtonPlusIconColor="@android:color/black"
-		app:fab_expandDirection="right"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/foto_buttonLand"
-		app:srcCompat="@android:drawable/ic_menu_add">
-
-		<com.getbase.floatingactionbutton.FloatingActionButton
-			android:id="@+id/webInfoFabLand"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			app:fab_colorNormal="@android:color/white"
-			app:fab_colorPressed="@android:color/white"
-			app:fab_icon="@drawable/web_150" />
-
-		<com.getbase.floatingactionbutton.FloatingActionButton
-			android:id="@+id/informationFabLand"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			app:fab_colorNormal="@android:color/white"
-			app:fab_colorPressed="@android:color/white"
-			app:fab_icon="@drawable/info_150" />
-
-		<com.getbase.floatingactionbutton.FloatingActionButton
-			android:id="@+id/geoArSwitcherLand"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			app:fab_colorNormal="@android:color/white"
-			app:fab_colorPressed="@android:color/white"
-			app:fab_icon="@drawable/geo_ar_150" />
-
-		<com.getbase.floatingactionbutton.FloatingActionButton
-			android:id="@+id/flashSwitcherLand"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:background="@android:color/white"
-			app:fab_colorNormal="@android:color/white"
-			app:fab_colorPressed="@android:color/white"
-			app:fab_icon="@drawable/flash_150" />
-
-		<com.getbase.floatingactionbutton.FloatingActionButton
-			android:id="@+id/switchCameraFabLand"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			app:fab_colorNormal="@android:color/white"

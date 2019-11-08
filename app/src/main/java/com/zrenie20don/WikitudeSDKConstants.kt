@@ -15,5 +15,6 @@ object WikitudeSDKConstants {
 
 enum class ARGEOCONST {
     EXTRA_AR_TYPE,
-    EXTRA_GEO_TYPE
+    EXTRA_GEO_TYPE,
+    EXTRA_3D,
 }

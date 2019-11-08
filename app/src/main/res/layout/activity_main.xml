@@ -50,7 +50,6 @@
         android:layout_gravity="center"
         android:src="@drawable/loadinglogo"
         android:scaleType="fitCenter"
-        android:contentDescription="@string/logo"
         android:visibility="visible" />
 
     <!--<android.support.v7.widget.AppCompatImageView
