@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:fab="http://schemas.android.com/tools"
 	android:id="@+id/mainLayout"
-	android:layout_width="fill_parent"
-	android:layout_height="fill_parent">
+
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
 
 	<!--<com.wikitude.architect.ArchitectView
 		android:id="@+id/architectView"
@@ -46,7 +46,7 @@
 		android:layout_marginEnd="16dp"
 		android:layout_marginBottom="32dp"
 		android:background="@drawable/camera_150"
-		app:layout_constraintBottom_toBottomOf="@+id/architectViewLayout"
+		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintEnd_toStartOf="@+id/fab"
 		app:layout_constraintHorizontal_bias="0.5"
@@ -61,7 +61,7 @@
 		app:layout_constraintEnd_toStartOf="@+id/foto_button"
 		app:layout_constraintHorizontal_bias="0.5"
 		app:layout_constraintHorizontal_chainStyle="packed"
-		app:layout_constraintStart_toEndOf="@+id/architectViewLayout"
+		app:layout_constraintStart_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="@+id/foto_button"
 		app:srcCompat="@drawable/video_150" />
@@ -93,7 +93,7 @@
 		android:layout_alignParentBottom="true"
 		android:alpha="0.4"
 		android:background="@drawable/levy_nizhniy"
-		app:layout_constraintBottom_toBottomOf="@+id/architectViewLayout"
+		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintStart_toStartOf="parent" />
 
 	<androidx.appcompat.widget.AppCompatImageView
@@ -178,3 +178,4 @@
 	</com.getbase.floatingactionbutton.FloatingActionsMenu>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

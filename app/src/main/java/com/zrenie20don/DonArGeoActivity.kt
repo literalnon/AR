@@ -86,15 +86,15 @@ class DonArGeoActivity : SimpleGeoArActivity() {
                     }
                 }.toFloat()
 
-                videoButton.rotation = newOrientation
-                foto_button.rotation = newOrientation
+                videoButton?.rotation = newOrientation
+                foto_button?.rotation = newOrientation
                 //fab.rotation = newOrientation
 
-                webInfoFab.rotation = newOrientation
-                informationFab.rotation = newOrientation
-                geoArSwitcher.rotation = newOrientation
-                flashSwitcher.rotation = newOrientation
-                switchCameraFab.rotation = newOrientation
+                webInfoFab?.rotation = newOrientation
+                informationFab?.rotation = newOrientation
+                geoArSwitcher?.rotation = newOrientation
+                flashSwitcher?.rotation = newOrientation
+                switchCameraFab?.rotation = newOrientation
             }
         }
 
@@ -166,7 +166,7 @@ class DonArGeoActivity : SimpleGeoArActivity() {
                 }
 
             } catch (e: Exception) {
-                foto_button.visibility = View.GONE
+                foto_button?.visibility = View.GONE
                 Toast.makeText(this, e.message, Toast.LENGTH_LONG).show()
                 e.printStackTrace()
             }

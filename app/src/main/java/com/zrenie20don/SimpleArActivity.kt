@@ -5,7 +5,9 @@ import android.content.res.Configuration
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
+import android.view.View.inflate
 import android.webkit.WebView
+import android.widget.FrameLayout
 import android.widget.Toast
 import com.crashlytics.android.Crashlytics
 
@@ -16,6 +18,7 @@ import com.wikitude.common.camera.CameraSettings
 import java.io.IOException
 
 import com.zrenie20don.ZrenieApp.wikiType
+import com.zrenie20don.extention.CustomArView
 import io.fabric.sdk.android.Fabric
 import kotlinx.android.synthetic.main.architect_cam.*
 
@@ -43,7 +46,7 @@ open class SimpleArActivity : AppCompatActivity() {
      * Those methods are preferably called in the corresponding Activity lifecycle callbacks.
      */
     protected var config: ArchitectStartupConfiguration? = null
-    var architectView: ArchitectView? = null
+    var architectView: CustomArView? = null
     /** The path to the AR-Experience. This is usually the path to its index.html.  */
     private val arExperience: String? = null
 
@@ -66,7 +69,7 @@ open class SimpleArActivity : AppCompatActivity() {
         }
 
         try {
-            architectView = ArchitectView(this)
+            architectView = CustomArView(this)//ArchitectView(this)
             architectView?.onCreate(config)
         } catch (e: Exception) {
             Log.e("architectView?", "architectView?.onCreate(config)")
@@ -88,12 +91,17 @@ open class SimpleArActivity : AppCompatActivity() {
                 ACTIVITY_ARCHITECT_WORLD_3D_URL
             }
         } catch (e: Exception) {
-            Log.e("architectView?", "architectView?.load")
+            //Log.e("architectView?", "architectView?.load")
             e.printStackTrace()
         }
 
-        setContentView(R.layout.architect_cam)
-        architectViewLayout?.addView(architectView)
+        val view = layoutInflater.inflate(R.layout.architect_cam, null)
+        view.findViewById<FrameLayout>(R.id.architectViewLayout)?.addView(architectView)
+
+        setContentView(view)//R.layout.architect_cam)
+        //architectView?.addView(inflate(this, R.layout.architect_cam, null))
+        //setContentView(architectView)
+        //architectViewLayout?.addView(architectView)
 
     }
 
