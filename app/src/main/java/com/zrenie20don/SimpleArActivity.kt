@@ -14,6 +14,7 @@ import com.crashlytics.android.Crashlytics
 import com.wikitude.architect.ArchitectStartupConfiguration
 import com.wikitude.architect.ArchitectView
 import com.wikitude.common.camera.CameraSettings
+import com.wikitude.common.permission.PermissionManager
 
 import java.io.IOException
 
@@ -51,19 +52,20 @@ open class SimpleArActivity : AppCompatActivity() {
     private val arExperience: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        Fabric.with(applicationContext, Crashlytics())
         try {
             super.onCreate(savedInstanceState)
+
+            Fabric.with(this, Crashlytics())
 
             WebView.setWebContentsDebuggingEnabled(true)
 
             config = ArchitectStartupConfiguration() // Creates a config with its default values.
 
             config?.licenseKey = WikitudeSDKConstants.WIKITUDE_SDK_KEY
-            config?.features = ArchitectStartupConfiguration.Features.Geo
-            config?.cameraResolution = CameraSettings.CameraResolution.AUTO
-            config?.cameraFocusMode = CameraSettings.CameraFocusMode.CONTINUOUS
-            config?.isCamera2Enabled = true
+            //config?.features = ArchitectStartupConfiguration.Features.Geo
+            //config?.cameraResolution = CameraSettings.CameraResolution.AUTO
+            //config?.cameraFocusMode = CameraSettings.CameraFocusMode.CONTINUOUS
+            //config?.isCamera2Enabled = true
         } catch (e: java.lang.Exception) {
             Toast.makeText(applicationContext, "onCreate ${e.message}", Toast.LENGTH_LONG).show()
         }
@@ -102,7 +104,6 @@ open class SimpleArActivity : AppCompatActivity() {
         //architectView?.addView(inflate(this, R.layout.architect_cam, null))
         //setContentView(architectView)
         //architectViewLayout?.addView(architectView)
-
     }
 
     override fun onLowMemory() {
@@ -134,7 +135,7 @@ open class SimpleArActivity : AppCompatActivity() {
         try {
             architectView?.registerWorldLoadedListener(object : ArchitectView.ArchitectWorldLoadedListener {
                 override fun worldWasLoaded(p0: String?) {
-                    Toast.makeText(this@SimpleArActivity, "world loaded success", Toast.LENGTH_LONG).show()
+                   // Toast.makeText(this@SimpleArActivity, "world loaded success", Toast.LENGTH_LONG).show()
                 }
 
                 override fun worldLoadFailed(p0: Int, p1: String?, p2: String?) {

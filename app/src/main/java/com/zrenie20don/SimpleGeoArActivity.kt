@@ -18,7 +18,7 @@ import com.zrenie20don.util.location.LocationProvider
  * This Activity needs Manifest.permission.ACCESS_FINE_LOCATION permissions
  * in addition to the required permissions of the SimpleArActivity.
  */
-open class SimpleGeoArActivity : SimpleArActivity(), LocationListener {
+open class SimpleGeoArActivity : DonArActivity(), LocationListener {
 
     protected var currentLocation: Location? = null
     /**

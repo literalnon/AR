@@ -1,11 +1,7 @@
 package com.zrenie20don
 
-import android.app.PendingIntent.getActivity
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
-import android.content.IntentSender
-import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.hardware.Sensor
 import android.hardware.SensorEvent
@@ -18,31 +14,22 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.Settings
-import androidx.annotation.RequiresApi
 import android.util.Log
+import android.view.MotionEvent
+import android.view.OrientationEventListener
+import android.view.ScaleGestureDetector
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import com.google.android.gms.common.api.GoogleApiClient
+import com.wikitude.architect.ArchitectView
+import com.wikitude.common.devicesupport.Feature
+import kotlinx.android.synthetic.main.architect_cam.*
 import java.io.File
 import java.io.FileOutputStream
 import java.util.*
-import android.view.ScaleGestureDetector
-import android.view.MotionEvent
-import android.view.OrientationEventListener
-import androidx.appcompat.app.AlertDialog
-import com.crashlytics.android.Crashlytics
-import com.google.android.gms.common.ConnectionResult
-import com.google.android.gms.common.api.GoogleApiClient
-import com.google.android.gms.common.api.ResultCallback
-import com.google.android.gms.location.*
-import kotlinx.android.synthetic.main.architect_cam.*
-import org.threeten.bp.LocalDateTime
-import org.threeten.bp.ZoneId
-import org.threeten.bp.ZoneOffset
-import org.threeten.bp.ZonedDateTime
-import org.threeten.bp.format.DateTimeFormatter
-import java.lang.RuntimeException
 
-class DonArGeoActivity : SimpleGeoArActivity() {
+open class DonArActivity : SimpleArActivity() {
 
     companion object {
         const val TIME_FORMAT = "HH:mm:ss"
@@ -220,6 +207,12 @@ class DonArGeoActivity : SimpleGeoArActivity() {
         val flashSwitcherClickListener = View.OnClickListener {
             architectView?.callJavascript("AR.hardware.camera.flashlight = ${flashIsChecked};")
             flashIsChecked = !flashIsChecked
+
+            if (flashIsChecked) {
+
+            } else {
+
+            }
         }
 
         flashSwitcher?.setOnClickListener(flashSwitcherClickListener)
@@ -248,7 +241,7 @@ class DonArGeoActivity : SimpleGeoArActivity() {
                 Log.i("TAG", "createLocationRequest")
             } else {
                 ZrenieApp.wikiType = ARGEOCONST.EXTRA_AR_TYPE
-                startActivity(Intent(this, DonArGeoActivity::class.java))
+                startActivity(Intent(this, DonArActivity::class.java))
                 finish()
                 //SimpleArActivity.currentWorld = SimpleArActivity.ACTIVITY_ARCHITECT_WORLD_URL
             }*/
@@ -260,31 +253,61 @@ class DonArGeoActivity : SimpleGeoArActivity() {
                     .setItems(R.array.choice_dialog) { p0, p1 ->
                         when(p1) {
                             0 -> {
-                                ZrenieApp.wikiType = ARGEOCONST.EXTRA_AR_TYPE
-                                startActivity(Intent(this, DonArGeoActivity::class.java))
-                                finish()
+                                if (!isSupporting(ARGEOCONST.EXTRA_AR_TYPE)) {
+                                    AlertDialog.Builder(this)
+                                            .setTitle("Alert!")
+                                            .setMessage("Device is not supported!")
+                                            .create()
+                                            .show()
+                                } else {
+                                    ZrenieApp.wikiType = ARGEOCONST.EXTRA_AR_TYPE
+                                    startActivity(Intent(this, DonArActivity::class.java))
+                                    finish()
+                                }
                             }
                             1 -> {
-                                ZrenieApp.wikiType = ARGEOCONST.EXTRA_3D
-                                startActivity(Intent(this, DonArGeoActivity::class.java))
-                                finish()
+                                if (!isSupporting(ARGEOCONST.EXTRA_3D)) {
+                                    AlertDialog.Builder(this)
+                                            .setTitle("Alert!")
+                                            .setMessage("Device is not supported!")
+                                            .create()
+                                            .show()
+                                } else {
+
+                                    ZrenieApp.wikiType = ARGEOCONST.EXTRA_3D
+                                    startActivity(Intent(this, DonArActivity::class.java))
+                                    finish()
+                                }
                             }
                             2 -> {
-                                ZrenieApp.wikiType = ARGEOCONST.EXTRA_GEO_TYPE
-                                createLocationRequest()
+                                if (!isSupporting(ARGEOCONST.EXTRA_GEO_TYPE)) {
+                                    AlertDialog.Builder(this)
+                                            .setTitle("Alert!")
+                                            .setMessage("Device is not supported!")
+                                            .create()
+                                            .show()
+                                } else {
+
+                                    ZrenieApp.wikiType = ARGEOCONST.EXTRA_GEO_TYPE
+                                    createLocationRequest()
+                                }
                             }
                         }
                     }
                     .create()
                     .show()
-
-
         }
 
         geoArSwitcher?.setOnClickListener(geoArSwitcherClickListener)
+        geoArSwitcher?.setIcon(
+                when {
+                    ZrenieApp.wikiType == ARGEOCONST.EXTRA_AR_TYPE -> R.drawable.ar_150
+                    ZrenieApp.wikiType == ARGEOCONST.EXTRA_3D -> R.drawable.ar3d_150
+                    else -> R.drawable.geo_150
+                })
 
         val informationFabClickListener = View.OnClickListener {
-            startActivity(Intent(this@DonArGeoActivity, PreviewActivity::class.java))
+            startActivity(Intent(this@DonArActivity, PreviewActivity::class.java))
         }
 
         informationFab?.setOnClickListener(informationFabClickListener)
@@ -297,6 +320,36 @@ class DonArGeoActivity : SimpleGeoArActivity() {
 
         val sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
         sensorManager.registerListener(listener, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL)
+
+        if (!isSupporting(ZrenieApp.wikiType)) {
+            AlertDialog.Builder(this)
+                    .setTitle("Alert!")
+                    .setMessage("Device is not supported!")
+                    .setCancelable(false)
+                    .create()
+                    .show()
+        }
+    }
+
+    private fun isSupporting(type: ARGEOCONST): Boolean {
+        val features = EnumSet.noneOf(Feature::class.java)
+
+        //features.add(Feature.INSTANT_TRACKING)
+
+
+        when (type) {
+            ARGEOCONST.EXTRA_AR_TYPE -> {
+                features.add(Feature.IMAGE_TRACKING)
+            }
+            ARGEOCONST.EXTRA_GEO_TYPE -> {
+                features.add(Feature.GEO)
+            }
+            ARGEOCONST.EXTRA_3D -> {
+                features.add(Feature.OBJECT_TRACKING)
+            }
+        }
+
+        return ArchitectView.isDeviceSupporting(this, features).isSuccess
     }
 
     val listener = object : SensorEventListener {
@@ -428,13 +481,13 @@ class DonArGeoActivity : SimpleGeoArActivity() {
                     when (status.statusCode) {
                         LocationSettingsStatusCodes.SUCCESS -> {
                             Log.i("TAG", "Все настройки местоположений установлены")
-                            startActivity(Intent(this@DonArGeoActivity, DonArGeoActivity::class.java))
+                            startActivity(Intent(this@DonArActivity, DonArActivity::class.java))
                             finish()
                         }
 
                         LocationSettingsStatusCodes.RESOLUTION_REQUIRED -> {
                             Log.i("TAG", "Настройки местоположения не установлены. Показать пользоватею диалог" + "для изменения настроек")
-                            status.startResolutionForResult(this@DonArGeoActivity, REQUEST_CHECK_SETTINGS)
+                            status.startResolutionForResult(this@DonArActivity, REQUEST_CHECK_SETTINGS)
                         }
                         LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE -> {
                             Log.i("TAG", "Настройки местоположения не могут быть установлены. Диалог не показываетсяс")
@@ -447,7 +500,7 @@ class DonArGeoActivity : SimpleGeoArActivity() {
             val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
             startActivity(intent)
         } else {
-            startActivity(Intent(this@DonArGeoActivity, DonArGeoActivity::class.java))
+            startActivity(Intent(this@DonArActivity, DonArActivity::class.java))
             finish()
         }
     }

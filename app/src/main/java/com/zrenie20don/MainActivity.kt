@@ -19,6 +19,8 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import com.wikitude.architect.ArchitectView
+import com.wikitude.common.devicesupport.Feature
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private var mSettings: SharedPreferences? = null
@@ -48,9 +50,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if (!ArchitectView.isDeviceSupported(this)) {
-            Toast.makeText(this, "Device is not supported", Toast.LENGTH_LONG).show()
-        }
         mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE)
         // Запоминаем данные
         editor = mSettings!!.edit()
@@ -173,7 +172,7 @@ class MainActivity : AppCompatActivity() {
             ActivityCompat.requestPermissions(this@MainActivity, permissions, 1)//выводит диалог, где пользователю предоставляется выбор
         } else {
             //продолжаем работу и вызываем класс
-            startActivity(Intent(this@MainActivity, DonArGeoActivity::class.java))
+            startActivity(Intent(this@MainActivity, DonArActivity::class.java))
             finish()
         }
     }
@@ -186,7 +185,7 @@ class MainActivity : AppCompatActivity() {
             1 -> {
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // Do task
-                    startActivity(Intent(this, DonArGeoActivity::class.java))
+                    startActivity(Intent(this, DonArActivity::class.java))
                     finish()
                 } else {
 
