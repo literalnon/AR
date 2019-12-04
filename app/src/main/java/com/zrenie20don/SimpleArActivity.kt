@@ -14,6 +14,7 @@ import com.crashlytics.android.Crashlytics
 import com.wikitude.architect.ArchitectStartupConfiguration
 import com.wikitude.architect.ArchitectView
 import com.wikitude.common.camera.CameraSettings
+import com.wikitude.common.devicesupport.Feature
 import com.wikitude.common.permission.PermissionManager
 
 import java.io.IOException
@@ -62,6 +63,18 @@ open class SimpleArActivity : AppCompatActivity() {
             config = ArchitectStartupConfiguration() // Creates a config with its default values.
 
             config?.licenseKey = WikitudeSDKConstants.WIKITUDE_SDK_KEY
+
+            config?.features = when (ZrenieApp.wikiType) {
+                ARGEOCONST.EXTRA_AR_TYPE -> {
+                    ArchitectStartupConfiguration.Features.ImageTracking
+                }
+                ARGEOCONST.EXTRA_GEO_TYPE -> {
+                    ArchitectStartupConfiguration.Features.Geo
+                }
+                ARGEOCONST.EXTRA_3D -> {
+                    ArchitectStartupConfiguration.Features.ObjectTracking
+                }
+            }
             //config?.features = ArchitectStartupConfiguration.Features.Geo
             //config?.cameraResolution = CameraSettings.CameraResolution.AUTO
             //config?.cameraFocusMode = CameraSettings.CameraFocusMode.CONTINUOUS

@@ -336,7 +336,6 @@ open class DonArActivity : SimpleArActivity() {
 
         //features.add(Feature.INSTANT_TRACKING)
 
-
         when (type) {
             ARGEOCONST.EXTRA_AR_TYPE -> {
                 features.add(Feature.IMAGE_TRACKING)
@@ -500,7 +499,7 @@ open class DonArActivity : SimpleArActivity() {
             val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
             startActivity(intent)
         } else {
-            startActivity(Intent(this@DonArActivity, DonArActivity::class.java))
+            startActivity(Intent(this@DonArActivity, SimpleGeoArActivity::class.java))
             finish()
         }
     }
