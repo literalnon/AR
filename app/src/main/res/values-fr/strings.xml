@@ -12,4 +12,10 @@
     <string name="object">Reconnaissance d\'objets 3D  </string>
     <string name="geo">Géolocalisation (mode test)</string>
 
+    <string name="disabled_geo"><font color='#5F6867'>Géolocalisation (mode test)</font></string>
+
+    <string name="active_image"><font color='#FCC506'>Reconnaissance d\'image</font></string>
+    <string name="active_object"><font color='#FCC506'>Reconnaissance d\'objets 3D</font></string>
+    <string name="active_geo"><font color='#FCC506'>Géolocalisation (mode test)</font></string>
+
 </resources>

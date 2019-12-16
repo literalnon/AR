@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:id="@+id/mainLayout"
-
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
 
@@ -139,7 +138,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			app:fab_colorNormal="@android:color/white"
-			app:fab_colorPressed="@android:color/white"
+			app:fab_colorPressed="@color/colorAccent"
 			app:fab_icon="@drawable/web_150" />
 
 		<com.getbase.floatingactionbutton.FloatingActionButton
@@ -147,14 +146,15 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			app:fab_colorNormal="@android:color/white"
-			app:fab_colorPressed="@android:color/white"
+			app:fab_colorPressed="@color/colorAccent"
 			app:fab_icon="@drawable/info_150" />
 
 		<com.getbase.floatingactionbutton.FloatingActionButton
 			android:id="@+id/geoArSwitcher"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			app:fab_colorNormal="@android:color/white"
+			app:fab_colorNormal="@color/colorAccent"
+			app:fab_colorPressed="@color/colorAccent"
 			app:fab_icon="@drawable/geo_ar_150" />
 
 		<com.getbase.floatingactionbutton.FloatingActionButton
@@ -171,10 +171,18 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			app:fab_colorNormal="@android:color/white"
-			app:fab_colorPressed="@android:color/white"
+			app:fab_colorPressed="@color/colorAccent"
 			app:fab_icon="@drawable/cameraflip_150" />
 
 	</com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+	<View
+		android:id="@+id/screenView"
+		android:visibility="gone"
+		android:alpha="0"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@android:color/white"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

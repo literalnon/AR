@@ -8,8 +8,14 @@
     <string name="preview_screen_button_start">EMPEZAR</string>
 
     <string name="dialog_title">Cambiar el modo de AR</string>
-    <string name="image"> Reconocimiento de imagen</string>
+    <string name="image">Reconocimiento de imagen</string>
     <string name="object">Reconocimiento de objetos 3D</string>
     <string name="geo">Geolocalización (modo de prueba)</string>
+
+    <string name="disabled_geo"><font color='#5F6867'>Geolocalización (modo de prueba)</font></string>
+
+    <string name="active_image"><font color='#FCC506'>Reconocimiento de imagen</font></string>
+    <string name="active_object"><font color='#FCC506'>Reconocimiento de objetos 3D</font></string>
+    <string name="active_geo"><font color='#FCC506'>Geolocalización (modo de prueba)</font></string>
 
 </resources>

@@ -150,7 +150,7 @@ class ScreenRecordActivity(
             mMediaRecorder!!.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP)
             mMediaRecorder!!.setOutputFile(Environment
                     .getExternalStoragePublicDirectory(Environment
-                            .DIRECTORY_DOWNLOADS).toString() + "/video${Calendar.getInstance().timeInMillis}.mp4")
+                            .DIRECTORY_MOVIES).toString() + "/video${Calendar.getInstance().timeInMillis}.mp4")
             mMediaRecorder!!.setVideoSize(DISPLAY_WIDTH, DISPLAY_HEIGHT)
             mMediaRecorder!!.setVideoEncoder(MediaRecorder.VideoEncoder.H264)
             mMediaRecorder!!.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB)

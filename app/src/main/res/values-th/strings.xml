@@ -3,13 +3,21 @@
 
 
     <string name="dialog_title">เมื่อสลับไปใช้โหมด AR</string>
+
     <string name="image">การจดจำรูปภาพ </string>
     <string name="object">การรับรู้จากวัตถุ 3 มิติ   </string>
     <string name="geo">ตำแหน่งทางภูมิศาสตร์ (โหมดทดสอบ)</string>
+
     <string name="preview_screen_button">มองใหม่ของคุณในโลก</string>
     <string name="preview_screen_button_start">เริ่มต้น</string>
     <string name="preview_screen_third_title">นอกจากนี้ ยังสามารถสลับระหว่างโหมด AR ในเมนูเพียงแค่เลื่อนเมนู</string>
     <string name="preview_screen_second_title">ใช้หน้าจอโทรศัพท์ในการควบคุมการใช้กล้อง ไม่ว่าจะเป็น การซูม การกดถ่ายภาพ หรือในโหมดวิดีโอ</string>
     <string name="preview_screen_first_title">เล็งกล้องไปที่รูปภาพโลโก้ ZRENIE 2.0 หรือ หน้าปกหนังสือเดือนทางของคุณ</string>
+
+    <string name="disabled_geo"><font color='#5F6867'>ตำแหน่งทางภูมิศาสตร์ (โหมดทดสอบ)</font></string>
+
+    <string name="active_image"><font color='#FCC506'>การจดจำรูปภาพ </font></string>
+    <string name="active_object"><font color='#FCC506'>การรับรู้จากวัตถุ 3 มิติ   </font></string>
+    <string name="active_geo"><font color='#FCC506'>ตำแหน่งทางภูมิศาสตร์ (โหมดทดสอบ)</font></string>
 
 </resources>

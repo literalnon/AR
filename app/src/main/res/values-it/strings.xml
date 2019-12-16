@@ -10,6 +10,12 @@
     <string name="dialog_title">Attivare la modalità AR</string>
     <string name="image">Riconoscimento delle immagini</string>
     <string name="object">Riconoscimento di oggetti 3D</string>
-    <string name="geo"> Geolocalizzazione (modalità test)</string>
+    <string name="geo">Geolocalizzazione (modalità test)</string>
+
+    <string name="disabled_geo"><font color='#5F6867'>Geolocalizzazione (modalità test)</font></string>
+
+    <string name="active_image"><font color='#FCC506'>Riconoscimento delle immagini</font></string>
+    <string name="active_object"><font color='#FCC506'>Riconoscimento di oggetti 3D</font></string>
+    <string name="active_geo"><font color='#FCC506'>Geolocalizzazione (modalità test)</font></string>
 
 </resources>

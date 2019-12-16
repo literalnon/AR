@@ -13,8 +13,8 @@ object WikitudeSDKConstants {
     //protected static final String WIKITUDE_SDK_KEY = "YNU7fMj3DNY/EsEaBGc1wC7XjBzrg0LwJJOUtPIEV8KGu79FpXm8sYy1xxUtLlCfa5b7hoW28CNG99SD5WEGxfc84fho4QVbyiKpBURy9SWU+AJw6GVl52Bu/ZGZD5crITGC99jUOp4WoP1M+lT8IqRUDoBq6p8c+/9Se+N9+qdTYWx0ZWRfXxDhmvDIdY5At0ip6R1ZVlvX2bfzBoAa2Oa2vp4bw0Uot9NBLtmTsDYThyemoUzrgdt4gbPckCWvKzS4qTXn2HYHig7c5g8cv3sTWry0CCg31WvKioWWMxJn6LFmJYLefHnxh8Ujb9+Y/rzCcP1ujQ9EfvTneB8kX2ffXYpOGqnc+UDmAeuhGLDllPFwSZmAP3Fm3CTvpa/fBJbipVhnvYYvQRT7b83USSTDdgrr6Zv2/IK9A4GFgwLuoCofcQMGUbhO+5cbnfIAx1Zk4dT7WBxLz+XzirawHWDYkTKiqwcDN2YBoRYTRiGwz/pIHSJ7wkkB0rpAYNhfAcMYaRlUxexuU9qd5O7lbGo9teKsipUoEk+fwHQ7DEXii+lJE9sjg4cffLR/VjOys5mLxW4JvO4bc9BI80Ef1xoCY0ccEsH+QuiKwuu93VSjbwv7APakbzaEJXkD2BrKo1ifPlYaoLs/WJuccTjANA812IgapLmOBh9Vp2Zib2ueqgSkry4/ctKpshB5zP2h";
 }
 
-enum class ARGEOCONST {
-    EXTRA_AR_TYPE,
-    EXTRA_GEO_TYPE,
-    EXTRA_3D
+enum class ARGEOCONST(val resId: Int) {
+    EXTRA_AR_TYPE(R.string.image),
+    EXTRA_GEO_TYPE(R.string.geo),
+    EXTRA_3D(R.string.`object`)
 }

@@ -8,14 +8,45 @@
     <string name="preview_screen_button_start">Начать</string>
 
     <string name="dialog_title">Переключить AR режим</string>
+
     <string name="image">Распознавание изображений</string>
     <string name="object">Распознавание 3D объектов</string>
     <string name="geo">Геолокации (тестовый режим)</string>
 
-    <array name="choice_dialog">
-        <item>@string/image</item>
+    <string name="disabled_geo"><font color='#5F6867'>Геолокации (тестовый режим)</font></string>
+
+    <string name="active_image"><font color='#FCC506'>Распознавание изображений</font></string>
+    <string name="active_object"><font color='#FCC506'>Распознавание 3D объектов</font></string>
+    <string name="active_geo"><font color='#FCC506'>Геолокации (тестовый режим)</font></string>
+
+    <array name="choice_image_dialog">
+        <item>@string/active_image</item>
         <item>@string/object</item>
         <item>@string/geo</item>
+    </array>
+
+    <array name="choice_object_dialog">
+        <item>@string/image</item>
+        <item>@string/active_object</item>
+        <item>@string/geo</item>
+    </array>
+
+    <array name="choice_geo_dialog">
+        <item>@string/image</item>
+        <item>@string/object</item>
+        <item>@string/active_geo</item>
+    </array>
+
+    <array name="choice_image_dialog_disable_geo">
+        <item>@string/active_image</item>
+        <item>@string/object</item>
+        <item>@string/disabled_geo</item>
+    </array>
+
+    <array name="choice_object_dialog_disable_geo">
+        <item>@string/image</item>
+        <item>@string/active_object</item>
+        <item>@string/disabled_geo</item>
     </array>
 
 </resources>

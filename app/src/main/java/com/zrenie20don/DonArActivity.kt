@@ -1,5 +1,6 @@
 package com.zrenie20don
 
+import android.animation.Animator
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -143,6 +144,46 @@ open class DonArActivity : SimpleArActivity() {
         }
 
         val fotoClickListener = View.OnClickListener {
+            screenView.animate()
+                    .alpha(1f)
+                    .setDuration(200)
+                    .setListener(object : Animator.AnimatorListener {
+                        override fun onAnimationRepeat(animation: Animator?) {
+
+                        }
+
+                        override fun onAnimationEnd(animation: Animator?) {
+                            screenView.animate()
+                                    .alpha(0f)
+                                    .setDuration(50)
+                                    .setListener(object : Animator.AnimatorListener {
+                                        override fun onAnimationRepeat(animation: Animator?) {
+
+                                        }
+
+                                        override fun onAnimationEnd(animation: Animator?) {
+
+                                        }
+
+                                        override fun onAnimationCancel(animation: Animator?) {
+
+                                        }
+
+                                        override fun onAnimationStart(animation: Animator?) {
+                                            screenView.visibility = View.GONE
+                                        }
+                                    })
+                        }
+
+                        override fun onAnimationCancel(animation: Animator?) {
+
+                        }
+
+                        override fun onAnimationStart(animation: Animator?) {
+                            screenView.visibility = View.VISIBLE
+                        }
+                    })
+
             try {
                 architectView?.captureScreen(1) { bitmap ->
                     try {
@@ -209,9 +250,11 @@ open class DonArActivity : SimpleArActivity() {
             flashIsChecked = !flashIsChecked
 
             if (flashIsChecked) {
-
+                flashSwitcher.colorNormal = resources.getColor(android.R.color.white)
+                flashSwitcher.setIcon(R.drawable.flash_150)
             } else {
-
+                flashSwitcher.colorNormal = resources.getColor(R.color.colorAccent)
+                flashSwitcher.setIcon(R.drawable.ic_flash_white)
             }
         }
 
@@ -221,8 +264,14 @@ open class DonArActivity : SimpleArActivity() {
 
         val switchCameraFabClickListener = View.OnClickListener {
             val js = if (switchCameraIsChecked) {
+                switchCameraFab.colorNormal = resources.getColor(R.color.colorAccent)
+                switchCameraFab.setIcon(R.drawable.ic_camera_move_white)
+
                 "AR.hardware.camera.position = AR.CONST.CAMERA_POSITION.FRONT"
             } else {
+                switchCameraFab.colorNormal = resources.getColor(android.R.color.white)
+                switchCameraFab.setIcon(R.drawable.cameraflip_150)
+
                 "AR.hardware.camera.position = AR.CONST.CAMERA_POSITION.BACK"
             }
             architectView?.callJavascript(js)
@@ -248,9 +297,50 @@ open class DonArActivity : SimpleArActivity() {
 
             //architectView.load(SimpleArActivity.currentWorld)
 
+
+            /*ARGEOCONST.values().forEach {
+                val str = getString(it.resId)
+
+                array.add(
+                        if (isSupporting(it)) {
+                            if (ZrenieApp.wikiType == it) {
+                                getString(R.string.active, str)
+                            } else {
+                                str
+                            }
+                        } else {
+                            getString(R.string.disabled, str)
+                        }
+                )
+            }*/
+
+            val array = when (ZrenieApp.wikiType) {
+                ARGEOCONST.EXTRA_AR_TYPE -> {
+                    if (isSupporting(ARGEOCONST.EXTRA_GEO_TYPE)) {
+                        R.array.choice_image_dialog
+                    } else {
+                        R.array.choice_image_dialog_disable_geo
+                    }
+                }
+                ARGEOCONST.EXTRA_3D -> {
+                    if (isSupporting(ARGEOCONST.EXTRA_GEO_TYPE)) {
+                        R.array.choice_object_dialog
+                    } else {
+                        R.array.choice_object_dialog_disable_geo
+                    }
+                }
+                ARGEOCONST.EXTRA_GEO_TYPE -> {
+                    if (isSupporting(ARGEOCONST.EXTRA_GEO_TYPE)) {
+                        R.array.choice_geo_dialog
+                    } else {
+                        R.array.choice_image_dialog_disable_geo
+                    }
+                }
+            }
+
             AlertDialog.Builder(this)
                     .setTitle(R.string.dialog_title)
-                    .setItems(R.array.choice_dialog) { p0, p1 ->
+                    .setItems(array) { p0, p1 ->
                         when(p1) {
                             0 -> {
                                 if (!isSupporting(ARGEOCONST.EXTRA_AR_TYPE)) {
@@ -287,8 +377,6 @@ open class DonArActivity : SimpleArActivity() {
                                             .create()
                                             .show()
                                 } else {
-
-                                    ZrenieApp.wikiType = ARGEOCONST.EXTRA_GEO_TYPE
                                     createLocationRequest()
                                 }
                             }
@@ -301,9 +389,9 @@ open class DonArActivity : SimpleArActivity() {
         geoArSwitcher?.setOnClickListener(geoArSwitcherClickListener)
         geoArSwitcher?.setIcon(
                 when {
-                    ZrenieApp.wikiType == ARGEOCONST.EXTRA_AR_TYPE -> R.drawable.ar_150
-                    ZrenieApp.wikiType == ARGEOCONST.EXTRA_3D -> R.drawable.ar3d_150
-                    else -> R.drawable.geo_150
+                    ZrenieApp.wikiType == ARGEOCONST.EXTRA_AR_TYPE -> R.drawable.ic_ar_white
+                    ZrenieApp.wikiType == ARGEOCONST.EXTRA_3D -> R.drawable.ic_object_white
+                    else -> R.drawable.ic_geo_white
                 })
 
         val informationFabClickListener = View.OnClickListener {
@@ -388,7 +476,7 @@ open class DonArActivity : SimpleArActivity() {
 
         val root = Environment.getExternalStoragePublicDirectory(
                 Environment.DIRECTORY_PICTURES).toString()
-        val myDir = File("$root/saved_images")
+        val myDir = File(root)
         myDir.mkdirs()
         val generator = Random()
 
@@ -499,6 +587,7 @@ open class DonArActivity : SimpleArActivity() {
             val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
             startActivity(intent)
         } else {
+            ZrenieApp.wikiType = ARGEOCONST.EXTRA_GEO_TYPE
             startActivity(Intent(this@DonArActivity, SimpleGeoArActivity::class.java))
             finish()
         }

@@ -12,4 +12,10 @@
     <string name="object">3D-Objekterkennung</string>
     <string name="geo">Geolocation (Testmodus)</string>
 
+    <string name="disabled_geo"><font color='#5F6867'>Geolocation (Testmodus)</font></string>
+
+    <string name="active_image"><font color='#FCC506'>Bilderkennung</font></string>
+    <string name="active_object"><font color='#FCC506'>3D-Objekterkennung</font></string>
+    <string name="active_geo"><font color='#FCC506'>Geolocation (Testmodus)</font></string>
+
 </resources>

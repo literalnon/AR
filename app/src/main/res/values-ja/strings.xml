@@ -12,4 +12,10 @@
     <string name="object">3Dオブジェクト認識</string>
     <string name="geo">ジオロケーション（テストモード）</string>
 
+    <string name="disabled_geo"><font color='#5F6867'>画像認識</font></string>
+
+    <string name="active_image"><font color='#FCC506'>ジオロケーション（テストモード）</font></string>
+    <string name="active_object"><font color='#FCC506'>3Dオブジェクト認識</font></string>
+    <string name="active_geo"><font color='#FCC506'>画像認識</font></string>
+
 </resources>

@@ -12,4 +12,11 @@
     <string name="object">Розпізнавання об\'єктів 3D  </string>
     <string name="geo">Геолокація (тестовий режим)</string>
 
+    <string name="disabled_geo"><font color='#5F6867'>Геолокація (тестовий режим)</font></string>
+
+    <string name="active_image"><font color='#FCC506'>Розпізнавання зображень</font></string>
+    <string name="active_object"><font color='#FCC506'>Розпізнавання об\'єктів 3D  </font></string>
+    <string name="active_geo"><font color='#FCC506'>Геолокація (тестовий режим)</font></string>
+
+
 </resources>
