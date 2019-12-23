@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">ZRENIE 2.0</string>
 
-    <string name="preview_screen_first_title">наверди камеру на обьект с логотипом zrenie 2.0 или на родную обложку паспорта</string>
+    <string name="preview_screen_first_title">наведи камеру на изображение с логотипом zrenie 2.0 или на родную обложку своего паспорта</string>
     <string name="preview_screen_second_title">используйте экран телефона, чтобы управлять зумом или сделать фото / видео</string>
-    <string name="preview_screen_third_title">чтобы увидеть больше, переходите между режимами ar в выпадающем меню</string>
+    <string name="preview_screen_third_title">чтобы увидеть больше, переключайтесь между режимами ar в выпадающем меню</string>
     <string name="preview_screen_button">ваш новый взгляд на мир</string>
     <string name="preview_screen_button_start">Начать</string>
 

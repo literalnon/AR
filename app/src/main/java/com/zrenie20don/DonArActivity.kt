@@ -90,7 +90,7 @@ open class DonArActivity : SimpleArActivity() {
 
         videoButton?.let {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                recordActivity = ScreenRecordActivity(this, object : ITimeChangedListener {
+                recordActivity = ScreenRecordActivity(this, object : ITimeChangedListener {//ScreenRecordActivity
                     override fun timerStart() {
 
                         fab?.visibility = View.INVISIBLE

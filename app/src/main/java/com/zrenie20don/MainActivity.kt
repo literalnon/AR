@@ -25,7 +25,14 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
     private var mSettings: SharedPreferences? = null
     private var animatorSet: AnimatorSet? = null
-    private val permissions = arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION)
+    private val permissions = arrayOf(
+            Manifest.permission.CAMERA,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.RECORD_AUDIO,
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION
+    )
+
     var editor: SharedPreferences.Editor? = null
 
     private val pagerAdapter = object : FragmentPagerAdapter(supportFragmentManager) {

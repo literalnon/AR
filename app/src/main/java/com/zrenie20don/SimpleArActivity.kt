@@ -53,6 +53,7 @@ open class SimpleArActivity : AppCompatActivity() {
     private val arExperience: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.e("lifecycle", "onCreate")
         try {
             super.onCreate(savedInstanceState)
 
@@ -120,6 +121,7 @@ open class SimpleArActivity : AppCompatActivity() {
     }
 
     override fun onLowMemory() {
+        Log.e("lifecycle", "onLowMemory")
         super.onLowMemory()
 
         try {
@@ -131,6 +133,7 @@ open class SimpleArActivity : AppCompatActivity() {
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
+        Log.e("lifecycle", "onPostCreate")
         super.onPostCreate(savedInstanceState)
         try {
             architectView?.onPostCreate()
@@ -148,10 +151,12 @@ open class SimpleArActivity : AppCompatActivity() {
         try {
             architectView?.registerWorldLoadedListener(object : ArchitectView.ArchitectWorldLoadedListener {
                 override fun worldWasLoaded(p0: String?) {
+                    Log.e("lifecycle", "worldWasLoaded")
                    // Toast.makeText(this@SimpleArActivity, "world loaded success", Toast.LENGTH_LONG).show()
                 }
 
                 override fun worldLoadFailed(p0: Int, p1: String?, p2: String?) {
+                    Log.e("lifecycle", "worldLoadFailed")
                     Toast.makeText(this@SimpleArActivity, "failed! $p0! ${p1}! ${p2}", Toast.LENGTH_LONG).show()
                     try {
                         architectView?.load(currentWorld)
@@ -169,6 +174,7 @@ open class SimpleArActivity : AppCompatActivity() {
     }
 
     override fun onResume() {
+        Log.e("lifecycle", "onResume")
         super.onResume()
         try {
             architectView?.onResume(); // Mandatory ArchitectView lifecycle call
@@ -177,10 +183,10 @@ open class SimpleArActivity : AppCompatActivity() {
             e.printStackTrace()
             Toast.makeText(applicationContext, "architectView?.onResume ${e.message}", Toast.LENGTH_LONG).show()
         }
-
     }
 
     override fun onPause() {
+        Log.e("lifecycle", "onPause")
         super.onPause()
         try {
             architectView?.onPause(); // Mandatory ArchitectView lifecycle call
@@ -194,6 +200,7 @@ open class SimpleArActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
+        Log.e("lifecycle", "onDestroy")
         super.onDestroy()
 
         try {

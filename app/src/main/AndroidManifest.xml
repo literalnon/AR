@@ -81,6 +81,7 @@
             android:configChanges="screenSize|orientation" />
 
         <activity android:name=".SimpleGeoArActivity" />
+        <activity android:name="com.wikitude.tools.activities.MediaPlayerActivity" />
 
         <activity android:name="com.wikitude.architect.BrowserActivity" />
 

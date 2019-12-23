@@ -10,6 +10,7 @@ import android.widget.Toast
 
 import com.wikitude.architect.ArchitectView
 import com.zrenie20don.util.location.LocationProvider
+import kotlinx.android.synthetic.main.architect_cam.*
 
 /**
  * This Activity is (almost) the least amount of code required to use the

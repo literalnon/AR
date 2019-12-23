@@ -1,35 +1,32 @@
 package com.zrenie20don
 
 import android.Manifest
-import android.R
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.hardware.display.DisplayManager
 import android.hardware.display.VirtualDisplay
+import android.media.MediaCodec
+import android.media.MediaCodecInfo
+import android.media.MediaFormat
 import android.media.MediaRecorder
 import android.media.projection.MediaProjection
 import android.media.projection.MediaProjectionManager
-import android.net.Uri
-import android.os.Bundle
 import android.os.Environment
 import android.os.Handler
-import android.provider.Settings
-import androidx.annotation.RequiresApi
-import com.google.android.material.snackbar.Snackbar
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import androidx.appcompat.app.AppCompatActivity
 import android.util.DisplayMetrics
-import android.util.Log
 import android.util.SparseIntArray
 import android.view.Surface
 import android.view.View
-import android.widget.*
+import android.widget.Toast
+import android.widget.ToggleButton
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import java.io.IOException
 import java.util.*
-import kotlin.collections.ArrayList
 
 interface ITimeChangedListener{
     fun timerStart()
@@ -43,6 +40,8 @@ class ScreenRecordActivity(
         private val timeChangedListener: ITimeChangedListener
 ) {
     private var mScreenDensity: Int = 0
+    private var mScreenWidth: Int = 0
+    private var mScreenHeight: Int = 0
     private var mProjectionManager: MediaProjectionManager? = null
     private var mMediaProjection: MediaProjection? = null
     private var mVirtualDisplay: VirtualDisplay? = null
@@ -53,10 +52,19 @@ class ScreenRecordActivity(
     private var runnable: Runnable? = null
     private var timer = 0L
 
+    private var mInputSurface: Surface? = null
+
+    private val VIDEO_MIME_TYPE = "video/avc"
+    private val VIDEO_WIDTH = 1280
+    private val VIDEO_HEIGHT = 720
+
     fun onCreate(mToggleButton: ArrayList<View>) {
         val metrics = DisplayMetrics()
         activity.windowManager.defaultDisplay.getMetrics(metrics)
         mScreenDensity = metrics.densityDpi
+        mScreenWidth = metrics.widthPixels
+        mScreenHeight = metrics.heightPixels
+
         mMediaRecorder = MediaRecorder()
         mProjectionManager = activity.getSystemService(Context.MEDIA_PROJECTION_SERVICE) as MediaProjectionManager
         runnable = Runnable {
@@ -132,15 +140,29 @@ class ScreenRecordActivity(
             return
         }
         mVirtualDisplay = createVirtualDisplay()
-        mMediaRecorder!!.start()
+        if (mVirtualDisplay == null) {
+            Toast.makeText(activity, "Error: virtual display is empty", Toast.LENGTH_LONG).show()
+        } else {
+            mMediaRecorder!!.start()
+        }
     }
 
-    private fun createVirtualDisplay(): VirtualDisplay {
-        return mMediaProjection!!.createVirtualDisplay("MainActivity",
-                DISPLAY_WIDTH, DISPLAY_HEIGHT, mScreenDensity,
-                DisplayManager.VIRTUAL_DISPLAY_FLAG_AUTO_MIRROR,
-                mMediaRecorder!!.surface, null, null
-        )
+    private fun createVirtualDisplay(): VirtualDisplay? {
+        val surface = mMediaRecorder!!.surface
+        return if (surface == null) {
+            Toast.makeText(activity, "Error: surface is empty", Toast.LENGTH_LONG).show()
+            null
+        } else {
+            mMediaProjection!!.createVirtualDisplay("MainActivity",
+                    mScreenWidth,
+                    mScreenHeight,
+                    mScreenDensity,
+                    DisplayManager.VIRTUAL_DISPLAY_FLAG_AUTO_MIRROR,
+                    surface,
+                    null,
+                    null
+            )
+        }
     }
 
     private fun initRecorder() {
@@ -162,6 +184,32 @@ class ScreenRecordActivity(
             mMediaRecorder!!.prepare()
         } catch (e: IOException) {
             e.printStackTrace()
+        }
+    }
+
+    private fun prepareVideoEncoder() {
+        val mVideoBufferInfo = MediaCodec.BufferInfo()
+        val format = MediaFormat.createVideoFormat(VIDEO_MIME_TYPE, VIDEO_WIDTH, VIDEO_HEIGHT);
+        val frameRate = 30; // 30 fps
+
+        // Set some required properties. The media codec may fail if these aren't defined.
+        format.setInteger(MediaFormat.KEY_COLOR_FORMAT,
+                MediaCodecInfo.CodecCapabilities.COLOR_FormatSurface);
+        format.setInteger(MediaFormat.KEY_BIT_RATE, 6000000); // 6Mbps
+        format.setInteger(MediaFormat.KEY_FRAME_RATE, frameRate);
+        format.setInteger(MediaFormat.KEY_CAPTURE_RATE, frameRate);
+        format.setInteger(MediaFormat.KEY_REPEAT_PREVIOUS_FRAME_AFTER, 1000000 / frameRate);
+        format.setInteger(MediaFormat.KEY_CHANNEL_COUNT, 1);
+        format.setInteger(MediaFormat.KEY_I_FRAME_INTERVAL, 1); // 1 seconds between I-frames
+
+        // Create a MediaCodec encoder and configure it. Get a Surface we can use for recording into.
+        try {
+            val mVideoEncoder = MediaCodec.createEncoderByType(VIDEO_MIME_TYPE);
+            mVideoEncoder.configure(format, null, null, MediaCodec.CONFIGURE_FLAG_ENCODE);
+            mInputSurface = mVideoEncoder.createInputSurface();
+            mVideoEncoder.start();
+        } catch (e: Exception) {
+            //releaseEncoders();
         }
     }
 
@@ -211,12 +259,12 @@ class ScreenRecordActivity(
     }
 
     companion object {
-        private val TAG = "MainActivity"
-        private val REQUEST_CODE = 1000
-        private val DISPLAY_WIDTH = 720
-        private val DISPLAY_HEIGHT = 1280
-        private val ORIENTATIONS = SparseIntArray()
-        private val REQUEST_PERMISSIONS = 10
+        val TAG = "MainActivity"
+        val REQUEST_CODE = 1000
+        val DISPLAY_WIDTH = 720
+        val DISPLAY_HEIGHT = 1280
+        val ORIENTATIONS = SparseIntArray()
+        val REQUEST_PERMISSIONS = 10
 
         init {
             ORIENTATIONS.append(Surface.ROTATION_0, 90)
