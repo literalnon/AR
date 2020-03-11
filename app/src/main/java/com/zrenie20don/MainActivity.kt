@@ -190,7 +190,7 @@ class MainActivity : AppCompatActivity() {
                                             permissions: Array<String>, grantResults: IntArray) {
         when (requestCode) {
             1 -> {
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                if (grantResults.getOrNull(0) == PackageManager.PERMISSION_GRANTED) {
                     // Do task
                     startActivity(Intent(this, DonArActivity::class.java))
                     finish()

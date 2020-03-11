@@ -144,10 +144,10 @@ open class DonArActivity : SimpleArActivity() {
         }
 
         val fotoClickListener = View.OnClickListener {
-            screenView.animate()
-                    .alpha(1f)
-                    .setDuration(200)
-                    .setListener(object : Animator.AnimatorListener {
+            screenView?.animate()
+                    ?.alpha(1f)
+                    ?.setDuration(200)
+                    ?.setListener(object : Animator.AnimatorListener {
                         override fun onAnimationRepeat(animation: Animator?) {
 
                         }
@@ -170,7 +170,7 @@ open class DonArActivity : SimpleArActivity() {
                                         }
 
                                         override fun onAnimationStart(animation: Animator?) {
-                                            screenView.visibility = View.GONE
+                                            screenView?.visibility = View.GONE
                                         }
                                     })
                         }
@@ -180,7 +180,7 @@ open class DonArActivity : SimpleArActivity() {
                         }
 
                         override fun onAnimationStart(animation: Animator?) {
-                            screenView.visibility = View.VISIBLE
+                            screenView?.visibility = View.VISIBLE
                         }
                     })
 

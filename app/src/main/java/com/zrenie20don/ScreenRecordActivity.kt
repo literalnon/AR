@@ -104,8 +104,16 @@ class ScreenRecordActivity(
         mMediaProjectionCallback = MediaProjectionCallback()
         mMediaProjection = mProjectionManager!!.getMediaProjection(resultCode, data!!)
         mMediaProjection!!.registerCallback(mMediaProjectionCallback, null)
-        mVirtualDisplay = createVirtualDisplay()
-        mMediaRecorder!!.start()
+        try {
+            mVirtualDisplay = createVirtualDisplay()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        try {
+            mMediaRecorder!!.start()
+        } catch (e: java.lang.Exception) {
+            e.printStackTrace()
+        }
     }
 
     var running = false
@@ -167,7 +175,11 @@ class ScreenRecordActivity(
 
     private fun initRecorder() {
         try {
-            mMediaRecorder!!.setAudioSource(MediaRecorder.AudioSource.MIC)
+            try {
+                mMediaRecorder!!.setAudioSource(MediaRecorder.AudioSource.MIC)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
             mMediaRecorder!!.setVideoSource(MediaRecorder.VideoSource.SURFACE)
             mMediaRecorder!!.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP)
             mMediaRecorder!!.setOutputFile(Environment

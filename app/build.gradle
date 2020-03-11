@@ -13,14 +13,14 @@ android {
             storePassword 'Shoaib.1992'
         }
     }
-    compileSdkVersion 29
+    compileSdkVersion 28
 
     defaultConfig {
         applicationId "com.zrenie20don"
         minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 25
-        versionName "10.4"
+        targetSdkVersion 28
+        versionCode 27
+        versionName "10.7"
         signingConfig signingConfigs.config
         multiDexEnabled true
     }
