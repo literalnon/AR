@@ -19,8 +19,8 @@ android {
         applicationId "com.zrenie20don"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 27
-        versionName "10.7"
+        versionCode 28
+        versionName "10.8"
         signingConfig signingConfigs.config
         multiDexEnabled true
     }
