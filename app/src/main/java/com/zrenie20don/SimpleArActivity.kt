@@ -99,12 +99,16 @@ open class SimpleArActivity : AppCompatActivity() {
         }
 
         try {
-            currentWorld = if (wikiType === ARGEOCONST.EXTRA_AR_TYPE) {
-                ACTIVITY_ARCHITECT_WORLD_URL
-            } else if (wikiType === ARGEOCONST.EXTRA_GEO_TYPE) {
-                ACTIVITY_ARCHITECT_WORLD_GEO_URL
-            } else {
-                ACTIVITY_ARCHITECT_WORLD_3D_URL
+            currentWorld = when {
+                wikiType === ARGEOCONST.EXTRA_AR_TYPE -> {
+                    ACTIVITY_ARCHITECT_WORLD_URL
+                }
+                wikiType === ARGEOCONST.EXTRA_GEO_TYPE -> {
+                    ACTIVITY_ARCHITECT_WORLD_GEO_URL
+                }
+                else -> {
+                    ACTIVITY_ARCHITECT_WORLD_3D_URL
+                }
             }
         } catch (e: Exception) {
             //Log.e("architectView?", "architectView?.load")
@@ -218,9 +222,13 @@ open class SimpleArActivity : AppCompatActivity() {
 
         val INTENT_EXTRAS_KEY_SAMPLE = "sampleData"
 
+        //val ACTIVITY_ARCHITECT_WORLD_URL = "https://storage.cloud.croc.ru:443/zrenie.kudinov/experience/index.html"//"https://hb.bizmrg.com/image-target/experience/index.html"//"https://storage.cloud.croc.ru/zrenie.kudinov/experience/index.html";
+        //val ACTIVITY_ARCHITECT_WORLD_GEO_URL = "https://storage.cloud.croc.ru:443/zrenie.kudinov/experience3/index.html"//"https://hb.bizmrg.com/geo-target/index.html"//"https://storage.cloud.croc.ru/zrenie.kudinov/geo/index.html";
+        //val ACTIVITY_ARCHITECT_WORLD_3D_URL = "https://storage.cloud.croc.ru:443/zrenie.kudinov/experience2/index.html"//"https://hb.bizmrg.com/obj-target/experience/index.html"
+
         val ACTIVITY_ARCHITECT_WORLD_URL = "https://storage.cloud.croc.ru:443/zrenie.kudinov/experience/index.html"//"https://hb.bizmrg.com/image-target/experience/index.html"//"https://storage.cloud.croc.ru/zrenie.kudinov/experience/index.html";
-        val ACTIVITY_ARCHITECT_WORLD_GEO_URL = "https://storage.cloud.croc.ru:443/zrenie.kudinov/experience3/index.html"//"https://hb.bizmrg.com/geo-target/index.html"//"https://storage.cloud.croc.ru/zrenie.kudinov/geo/index.html";
-        val ACTIVITY_ARCHITECT_WORLD_3D_URL = "https://storage.cloud.croc.ru:443/zrenie.kudinov/experience2/index.html"//"https://hb.bizmrg.com/obj-target/experience/index.html"
+        val ACTIVITY_ARCHITECT_WORLD_GEO_URL = "https://storage.cloud.croc.ru:443/zrenie.kudinov/geo/index.html"//"https://hb.bizmrg.com/geo-target/index.html"//"https://storage.cloud.croc.ru/zrenie.kudinov/geo/index.html";
+        val ACTIVITY_ARCHITECT_WORLD_3D_URL = "https://storage.cloud.croc.ru:443/zrenie.kudinov/object/index.html"//"https://hb.bizmrg.com/obj-target/experience/index.html"
 
         var currentWorld = ACTIVITY_ARCHITECT_WORLD_URL
 
