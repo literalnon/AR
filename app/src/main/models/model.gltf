@@ -1,13 +1,1 @@
-{
-	"scene" : 0,
-	"scenes" : 
-	[
-		{
-			"name" : "defaultScene",
-			"nodes" : 
-			[
-				0
-			]
-		}
-	]
-}
+{}
