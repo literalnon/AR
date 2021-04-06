@@ -1,85 +1,4 @@
 {
-	"accessors" : 
-	[
-		{
-			"bufferView" : 2,
-			"byteOffset" : 0,
-			"componentType" : 5126,
-			"count" : 497,
-			"max" : 
-			[
-				1,
-				1,
-				1,
-				1
-			],
-			"min" : 
-			[
-				0.0697270855307579,
-				0.08919350802898407,
-				0.06190747767686844,
-				1
-			],
-			"name" : "accessor_color_m0-PolyPaper10_-47234",
-			"type" : "VEC4"
-		},
-		{
-			"bufferView" : 0,
-			"byteOffset" : 0,
-			"componentType" : 5123,
-			"count" : 603,
-			"max" : 
-			[
-				496
-			],
-			"min" : 
-			[
-				0
-			],
-			"name" : "accessor_indices_0_m0-PolyPaper10_-47234",
-			"type" : "SCALAR"
-		},
-		{
-			"bufferView" : 1,
-			"byteOffset" : 5964,
-			"componentType" : 5126,
-			"count" : 497,
-			"max" : 
-			[
-				0.9958287,
-				0.9959039,
-				0.9647509
-			],
-			"min" : 
-			[
-				-0.9964691,
-				-0.9998224,
-				-0.9915537
-			],
-			"name" : "accessor_normal_m0-PolyPaper10_-47234",
-			"type" : "VEC3"
-		},
-		{
-			"bufferView" : 1,
-			"byteOffset" : 0,
-			"componentType" : 5126,
-			"count" : 497,
-			"max" : 
-			[
-				-0.2461121,
-				1.650744,
-				0.709751
-			],
-			"min" : 
-			[
-				-0.4955228,
-				1.363052,
-				0.4298946
-			],
-			"name" : "accessor_position_m0-PolyPaper10_-47234",
-			"type" : "VEC3"
-		}
-	],
 	"asset" : 
 	{
 		"copyright" : "Unknown",
@@ -224,7 +143,6 @@
 	"scenes" : 
 	[
 		{
-			"extras" : {},
 			"name" : "defaultScene",
 			"nodes" : 
 			[
